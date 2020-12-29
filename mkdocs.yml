@@ -1,7 +1,6 @@
 site_name: XLKit Learn User Manual
 theme:
   name: null
-  custom_dir: mkdocs-material/material
   features:
     - toc.integrate
 
