@@ -1,8 +1,6 @@
 site_name: XLKit Learn User Manual 
 theme:
   name: material
-  features:
-    - toc.integrate
 
   markdown_extensions:
     - admonition
