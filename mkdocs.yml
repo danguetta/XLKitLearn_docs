@@ -2,8 +2,8 @@ site_name: XLKit Learn User Manual
 theme:
   name: material
 
-  markdown_extensions:
-    - admonition
+markdown_extensions:
+  - admonition
   
   # 404 page
   static_templates:
