@@ -1,3 +1,6 @@
+markdown_extensions:
+- admonition
+
 site_name: XLKit Learn User Manual 
 theme:
   name: material
