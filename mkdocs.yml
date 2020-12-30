@@ -4,7 +4,6 @@ theme:
 
   markdown_extensions:
     - admonition
-    - attr_list
   
   # 404 page
   static_templates:
