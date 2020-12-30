@@ -6,7 +6,7 @@ XLKitLearn supports supervised and unsupervised text analytics. Identify the fre
 Save the data in the same folder as XLKitLearn, and enter the data file name including  the file type to select the data.
 > `.csv` and `.txt` are accepted file types
 
-![](Select_text.gif) "width = 50%
+![](Select_text.gif){: align=left }
 
 
 ---
