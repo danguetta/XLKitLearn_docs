@@ -76,7 +76,7 @@ XLKitLearn's formula editor can be accessed by clicking on the three dots to the
 
 The formula editor also supports auto-complete for quicker formula entry. As variable names are typed in the formula entry box, the list on the left is filtered down to variables that begin with those letters, and the first such variable is automatically suggested. Pressing the Tab key will complete the name of that variable:
 
-<img src="/Formula_Editor.gif" width="600">
+![](Formula_Editor.gif)
 
 > As in other parts of the add-in, a red input box indicates an error in the formula; the specific error will be displayed in the area at the bottom of the formula editor.
 
