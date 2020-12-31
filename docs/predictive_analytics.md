@@ -25,10 +25,10 @@ Windows users have two advanced options below the setting to give the user more 
 If the data can fit in an excel sheet, add the data as a new tab. "Click to Select" the range of independent and dependent data including column headers. Column headers should not include spaces.
 > Always add data to the XLKitLearn; don't move the add-in tab to another workbook.
 
-![](Select_Small_Data.gif)
+![](Select_Small_Data.gif){: align=right }
 
 When working with very large datasets, save the data as a csv in the same folder as XLKitLearn, and enter the data file name including  _.csv_ to select the data.
-![](Select_Large_Data.gif)
+![](Select_Large_Data.gif){: align=right }
 
 ---
 
