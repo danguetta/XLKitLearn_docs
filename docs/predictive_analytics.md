@@ -27,9 +27,13 @@ Windows users have two advanced options below the setting to give the user more 
 
 ## Selecting data
 If the data can fit in an excel sheet, add the data as a new tab. "Click to Select" the range of independent and dependent data including column headers. Column headers should not include spaces.
-> Always add data to the XLKitLearn; don't move the add-in tab to another workbook.
+!!! Waring
+    Always add data to the XLKitLearn; don't move the add-in tab to another workbook.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor massa, nec semper lorem quam in massa.![](Select_Small_Data.gif){: align=right }
+![](Select_Small_Data.gif){: align=right }
+
+
+
 
 When working with very large datasets, save the data as a csv in the same folder as XLKitLearn, and enter the data file name including  _.csv_ to select the data.
 ![](Select_Large_Data.gif){: align=right }
@@ -53,7 +57,8 @@ The basic structure of each formula is as follows:
 
 Formulas can be typed directly into the formula box of the add-in settings, or using the [formula editor](#the-formula-editor).
 
-> Each variable should be referred to by the column headers in the first row of the [training data](#selecting-data).
+!!! note "Specify Variables"
+    Each variable should be referred to by the column headers in the first row of the [training data](#selecting-data).
 
 ---
 
@@ -76,13 +81,15 @@ The following predictive models can be chosen from the dropdown.
 
 XLKitLearn's formula editor can be accessed by clicking on the three dots to the right of the formula box in the settings. The formula editor lists all the headers in the training data on the left, and provides a larger area in which to enter a formula on the right.
 
-> When data from an external file is used, Mac security settings do not allow XLKitLearn to open the file and read the headers. Thus, the formula editor will _not_ work when external data is used on a Mac computer.
+!!! warning "Mac User Connectivity"
+    When data from an external file is used, Mac security settings do not allow XLKitLearn to open the file and read the headers. Thus, the formula editor will _not_ work when external data is used on a Mac computer.
 
 The formula editor also supports auto-complete for quicker formula entry. As variable names are typed in the formula entry box, the list on the left is filtered down to variables that begin with those letters, and the first such variable is automatically suggested. Pressing the Tab key will complete the name of that variable:
 
 ![](Formula_Editor.gif)
 
-> As in other parts of the add-in, a red input box indicates an error in the formula; the specific error will be displayed in the area at the bottom of the formula editor.
+!!! note "Errors"
+    As in other parts of the add-in, a red input box indicates an error in the formula; the specific error will be displayed in the area at the bottom of the formula editor.
 
 ---
 
@@ -102,15 +109,18 @@ The following advanced features are available:
 
 ## Parameter Tuning
 Specifying the number of folds in the settings will tell the add-in to run a [k-fold cross validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) with the given number of folds. The training and test data will be randomly sorted into folds based upon the [Randomization Seed](https://en.wikipedia.org/wiki/Random_seed) then all regressions will be automatically run. The model with the highest average out-of-sample score for the training data will used on the evaluation dataset if an [evaluation dataset](#Specifying_an_evaluation_set) is specified.
-> Using the same `Randomization Seed` can enable two users to generate the same random order. Enter a random list of numbers once the model is finished to truly randomly sort the data.
 
 Two or more models can be compared using an ```&``` to separate each model in the [formula editor](#the-formula-editor).
+
+!!! success 
+    Using the same `Randomization Seed` can enable two users to generate the same random order. Enter a random list of numbers once the model is finished to truly randomly sort the data.
 
 ---
 
 ## Specifying an evaluation set
 `No evaluation set` option is selected by default. Reserve data for evaluation by either specifying the proportion of data to be set aside or by selecting a specific evaluation data set range the same way training data is selected.
-> Be careful not to generate an evaluation output dataset that is too big for excel or it might crash.
+!!! warning 
+    Be careful not to generate an evaluation output dataset that is too big for excel or it might crash.
 
 ---
 
