@@ -1,7 +1,9 @@
 # Introduction
-## Background
 
 [Download XLKitLearn](#){: .md-button }
+
+
+## Background
 
  Please share your feedback with us at ```xlkitlearn@guetta.com```.
 
