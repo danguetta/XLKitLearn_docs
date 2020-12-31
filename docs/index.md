@@ -1,11 +1,11 @@
 # Introduction
 ## Background
 
- Please share your feedback with us at ```ideas@xlkitlearn.com```.
+[Download XLKitLearn](#){: .md-button }
+
+ Please share your feedback with us at ```xlkitlearn@guetta.com```.
 
  This excel add-in makes it easy to run causal and predictive analytics like linear/logistic regressions, boosted decision trees, random forests and text analytics using tools like K-fold cross validation, lasso penalties, TF-IDF weights and Latent Dirichlet Allocation. A working understanding of all of these approaches and tools is assumed, but links are included for reference.
-
-[Download XLKitLearn](#){: .md-button }
 
  The general steps to using this tool are:
 
