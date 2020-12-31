@@ -29,11 +29,13 @@ Exclude too common and too frequent words by setting a min and max frequency (as
 ## Output
 Select the proportion of data to reserve for evaluation and indicate if the data should be exported in a sparse format or specify the number of topics and max iterations to run a unsupervised a Latent Dirichlet Allocation.
 
-!!! warning "Using Predictive Analytics"
-    It is critical to use the same proportion of evaluation data and randomization seed between the text analytics and the predictive analytics section so the test and evaluation data are aligned.
 
 ---
 
 
 ## Making predictions
 The outputs of the text analytics can be used as inputs for Predictive analytics. Run predictive analytics as normally using the text analytics output as the predictive analytics input.
+
+!!! warning "Using Predictive Analytics"
+    It is critical to use the same proportion of evaluation data and randomization seed between the text analytics and the predictive analytics section so the test and evaluation data are aligned.
+
