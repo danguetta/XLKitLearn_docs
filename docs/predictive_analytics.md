@@ -27,7 +27,8 @@ Windows users have two advanced options below the setting to give the user more 
 
 ## Selecting data
 If the data can fit in an excel sheet, add the data as a new tab. "Click to Select" the range of independent and dependent data including column headers. Column headers should not include spaces.
-!!! Waring
+
+!!! warning "Adding Data"
     Always add data to the XLKitLearn; don't move the add-in tab to another workbook.
 
 ![](Select_Small_Data.gif){: align=right }
@@ -112,14 +113,14 @@ Specifying the number of folds in the settings will tell the add-in to run a [k-
 
 Two or more models can be compared using an ```&``` to separate each model in the [formula editor](#the-formula-editor).
 
-!!! success 
+!!! success "Replicating Analysis"
     Using the same `Randomization Seed` can enable two users to generate the same random order. Enter a random list of numbers once the model is finished to truly randomly sort the data.
 
 ---
 
 ## Specifying an evaluation set
 `No evaluation set` option is selected by default. Reserve data for evaluation by either specifying the proportion of data to be set aside or by selecting a specific evaluation data set range the same way training data is selected.
-!!! warning 
+!!! warning "Crashing"
     Be careful not to generate an evaluation output dataset that is too big for excel or it might crash.
 
 ---
