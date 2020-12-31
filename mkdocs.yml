@@ -1,6 +1,6 @@
 markdown_extensions:
 - admonition
-
+- attr_list
 
 site_name: XLKit Learn User Manual 
 theme:
