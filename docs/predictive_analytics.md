@@ -18,6 +18,7 @@ The `Edit Settings` button allows the user to design analysis like selecting the
 Windows users have two advanced options below the setting to give the user more control over early termination and processing speed. Mac users have ______________
 !!! Note "Early Termination"
     If the early termination option is selected, a black Python console will pop up. Close the console to stop the analysis.
+    
 ---
 
 
