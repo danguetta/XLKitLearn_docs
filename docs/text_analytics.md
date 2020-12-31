@@ -8,17 +8,13 @@ Save the data in the same folder as XLKitLearn, and enter the data file name inc
 
 ![](Select_text.gif)
 
-!!! note
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
-
 ---
 
 
 ## Feature Extraction
 Exclude too common and too frequent words by setting a min and max frequency (as a decimal). Set the `Max features` to include in the output with the slider.
-> The 1,000 feature limit is due to the max number of excel columns and does not impact the analysis.
+!!! note
+    The 1,000 feature limit is due to the max number of excel columns and does not impact the analysis.
 
 - Remove English words without much meaning with `Remove English stop words`
 - Calculate `TF-IDF` scores to determine the relative frequency and importance of words
@@ -33,7 +29,8 @@ Exclude too common and too frequent words by setting a min and max frequency (as
 ## Output
 Select the proportion of data to reserve for evaluation and indicate if the data should be exported in a sparse format or specify the number of topics and max iterations to run a unsupervised a Latent Dirichlet Allocation.
 
-> It is critical to use the same proportion of evaluation data and randomization seed between the text analytics and the predictive analytics section so the test and evaluation data are aligned.
+!!! warning 
+    It is critical to use the same proportion of evaluation data and randomization seed between the text analytics and the predictive analytics section so the test and evaluation data are aligned.
 
 ---
 
