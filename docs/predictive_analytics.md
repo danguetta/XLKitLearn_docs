@@ -12,19 +12,28 @@ The `Edit Settings` button allows the user to design analysis like selecting the
 ---
 
 ## Selecting data
-If the data can fit in an excel sheet, add the data as a new tab. "Click to Select" the range of independent and dependent data including column headers. Column headers should not include spaces.
 
-!!! warning "Adding Data"
-    Always add data to the XLKitLearn; don't move the add-in tab to another workbook.
+The first step in any predictive analytic workflow is to specify the data that will be used in the model. The data should be in the same workbook; click on the "Click to Select" button under "Training" in the add-in dialogue, and select the entire dataset you will be using, including column headers. Click [here](Select_Small_Data.gif) for a demo.
 
-![](Select_Small_Data.gif){: align=right }
-
+!!! warning "Adding Sheets Containing Data"
+    As discussed in the [introduction](index.md), you should never move the add-in sheet *to* another workbook. If you data sits in another Excel workbook, bring the sheet containing your data *into* the add-in Excel workbook.
+    
+!!! warning "Column Names"
+    The first row of your data should contain column names. There are a number of rules these column names must satisfy. They must contain only letters, numbers, and underscores - no spaces - and cannot start with a number. They are also case-sensitive.
+    
 ---
 
 ### Reading data from files
 
-When working with very large datasets, save the data as a csv in the same folder as XLKitLearn, and enter the data file name including  _.csv_ to select the data.
-![](Select_Large_Data.gif){: align=right }
+If your file is very large, opening it in Excel may slow down your computer (and indeed, if your file is very large, it might not even be possible to open it in Excel).
+
+For those situations, XLKitLearn allows you to read data directly from a source file, without having to open it in Excel. After clicking on "Click to select", simply type the name of the file directly into the dialogue box. Click [here](Select_Large_Data.gif) for a demo. The first row of the file should contain the column names (the same column name rules apply).
+
+XLKit learn can read .csv files as well as .xlsx files; make sure to include the file extension (.csv or .xslx) when you specify the file name.
+
+!!! warning "File Existence"
+    On a Windows machine, XLKitLearn will automatically check whether the file exists when you click "OK"; you will not be able to select a file that doesn't exist. Because of Mac security settings, XLKitLearn won't be able to check this immediately on a Mac - you'll need to press "run" and launch Python before finding out whether the file can be loaded.
+
 
 ---
 
