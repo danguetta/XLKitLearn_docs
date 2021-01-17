@@ -11,20 +11,6 @@ The `Edit Settings` button allows the user to design analysis like selecting the
 
 ---
 
-
-## Advanced options
-
-
-Windows users have two advanced options below the setting to give the user more control over early termination and processing speed. Mac users have ______________
-
-
-!!! Note "Early Termination"
-    If the early termination option is selected, a black Python console will pop up. Close the console to stop the analysis.
-    
----
-
-
-
 ## Selecting data
 If the data can fit in an excel sheet, add the data as a new tab. "Click to Select" the range of independent and dependent data including column headers. Column headers should not include spaces.
 
@@ -33,52 +19,16 @@ If the data can fit in an excel sheet, add the data as a new tab. "Click to Sele
 
 ![](Select_Small_Data.gif){: align=right }
 
+---
 
-
+### Reading data from files
 
 When working with very large datasets, save the data as a csv in the same folder as XLKitLearn, and enter the data file name including  _.csv_ to select the data.
 ![](Select_Large_Data.gif){: align=right }
 
 ---
 
-## Specifying a Predictive Model
-
-XLKitLearn predictive models comprise two main ingredients:
-
-1. The predictive model to be used, and any parameters required to fit this model.
-2. The variable that needs to be predicted (the dependent variable) as well as the variables that should be used to predict it (the independent variables).
-
-The model can be selected among [models available](#supported-predictive-models) in the `Model` dropdown, and its parameters can be specified in the `Parameter(s)` box below.
-
-To specify the dependent and independent variables, XLKitLearn leverages the [patsy](https://patsy.readthedocs.io/en/latest/) library to allow the specification of these variables as a _Patsy formula_ (similar but not identical to [R](https://www.r-project.org/)-style formulas). It also adds a number of [features](#advanced-xlkitlearn-formulas) above and beyond those available in Patsy.
-
-The basic structure of each formula is as follows:
-
-`[Dependent Variable] ~ [Independent Variable 1] + [Independent Var. 2] + ...`
-
-Formulas can be typed directly into the formula box of the add-in settings, or using the [formula editor](#the-formula-editor).
-
-!!! note "Specify Variables"
-    Each variable should be referred to by the column headers in the first row of the [training data](#selecting-data).
-
----
-
-## Supported predictive models
-
-The following predictive models can be chosen from the dropdown.
-
-1. **Linear and logistic regression**: XLKitLearn will automatically determine whether a continuous [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model or a binary [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) model should be used. If the dependent variable in the model contains 0s or 1s only (_or_ if the dependent variable is a [logical statement](#logical-dependent-var)), a logistic regression model will be used. Otherwise, a linear regression model will be used. Note that XLKitLearn does not support classification models with more than two possible outcomes. XLKitLearn makes one unique parameter available for these models - the [Lasso penalty](https://en.wikipedia.org/wiki/Lasso_(statistics)). This parameter should either be specified as a number indicating the weight of the Lasso penalty _or_ can be set to ```BS``` to perform best subset selection. Compare multiple lasso penalties by separating entries with an ```&```.
-
-2. **Decision tree**: A simple [decision tree](https://en.wikipedia.org/wiki/Decision_tree_learning) will be fit using CART. `Tree depth` is the only unique parameter that needs to be chosen; multiple depths can be compared by separating depths with an ```&```.
-
-3. **Boosted decision tree**: A boosted decision tree based on the given `Tree depth`, `Max trees` and `Learning rate`. Different tree depths can be compared by using an `&`.
-> Only the tree depth should be compared because XLKitLearn will automatically generate trees based on the max number of trees.
-
-4. **Random forest**: Fit a random forest based on `Number of trees` and `Tree depth` which can be compared with an `&`.
-
----
-
-## The Formula Editor
+## Specifying a Formula
 
 XLKitLearn's formula editor can be accessed by clicking on the three dots to the right of the formula box in the settings. The formula editor lists all the headers in the training data on the left, and provides a larger area in which to enter a formula on the right.
 
@@ -108,6 +58,43 @@ The following advanced features are available:
 * **Removing the intercept**: The intercept can be removed in the [formula editor](#the-formula-editor) by adding a `-1` after the formula
 ---
 
+## Specifying a Predictive Model
+
+XLKitLearn predictive models comprise two main ingredients:
+
+1. The predictive model to be used, and any parameters required to fit this model.
+2. The variable that needs to be predicted (the dependent variable) as well as the variables that should be used to predict it (the independent variables).
+
+The model can be selected among [models available](#supported-predictive-models) in the `Model` dropdown, and its parameters can be specified in the `Parameter(s)` box below.
+
+To specify the dependent and independent variables, XLKitLearn leverages the [patsy](https://patsy.readthedocs.io/en/latest/) library to allow the specification of these variables as a _Patsy formula_ (similar but not identical to [R](https://www.r-project.org/)-style formulas). It also adds a number of [features](#advanced-xlkitlearn-formulas) above and beyond those available in Patsy.
+
+The basic structure of each formula is as follows:
+
+`[Dependent Variable] ~ [Independent Variable 1] + [Independent Var. 2] + ...`
+
+Formulas can be typed directly into the formula box of the add-in settings, or using the [formula editor](#the-formula-editor).
+
+!!! note "Specify Variables"
+    Each variable should be referred to by the column headers in the first row of the [training data](#selecting-data).
+
+---
+
+### Supported predictive models
+
+The following predictive models can be chosen from the dropdown.
+
+1. **Linear and logistic regression**: XLKitLearn will automatically determine whether a continuous [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model or a binary [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) model should be used. If the dependent variable in the model contains 0s or 1s only (_or_ if the dependent variable is a [logical statement](#logical-dependent-var)), a logistic regression model will be used. Otherwise, a linear regression model will be used. Note that XLKitLearn does not support classification models with more than two possible outcomes. XLKitLearn makes one unique parameter available for these models - the [Lasso penalty](https://en.wikipedia.org/wiki/Lasso_(statistics)). This parameter should either be specified as a number indicating the weight of the Lasso penalty _or_ can be set to ```BS``` to perform best subset selection. Compare multiple lasso penalties by separating entries with an ```&```.
+
+2. **Decision tree**: A simple [decision tree](https://en.wikipedia.org/wiki/Decision_tree_learning) will be fit using CART. `Tree depth` is the only unique parameter that needs to be chosen; multiple depths can be compared by separating depths with an ```&```.
+
+3. **Boosted decision tree**: A boosted decision tree based on the given `Tree depth`, `Max trees` and `Learning rate`. Different tree depths can be compared by using an `&`.
+> Only the tree depth should be compared because XLKitLearn will automatically generate trees based on the max number of trees.
+
+4. **Random forest**: Fit a random forest based on `Number of trees` and `Tree depth` which can be compared with an `&`.
+
+---
+
 ## Parameter Tuning
 Specifying the number of folds in the settings will tell the add-in to run a [k-fold cross validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) with the given number of folds. The training and test data will be randomly sorted into folds based upon the [Randomization Seed](https://en.wikipedia.org/wiki/Random_seed) then all regressions will be automatically run. The model with the highest average out-of-sample score for the training data will used on the evaluation dataset if an [evaluation dataset](#Specifying_an_evaluation_set) is specified.
 
@@ -118,7 +105,7 @@ Two or more models can be compared using an ```&``` to separate each model in th
 
 ---
 
-## Specifying an evaluation set
+## Training and Test Sets
 `No evaluation set` option is selected by default. Reserve data for evaluation by either specifying the proportion of data to be set aside or by selecting a specific evaluation data set range the same way training data is selected.
 !!! warning "Crashing"
     Be careful not to generate an evaluation output dataset that is too big for excel or it might crash.
@@ -127,6 +114,10 @@ Two or more models can be compared using an ```&``` to separate each model in th
 
 ## Making predictions on new data
 Make predictions on new input data using by adding data to the `Make predictions for new data` section. The model with the highest out-of-sample score is used to make predictions on the new data and the predicted outcomes will be added to the output.
+
+---
+
+## The Randomization Seed
 
 ---
 
@@ -144,3 +135,15 @@ The model output is dynamic based upon the model and dataset. Depending on model
 
 5. **Equivalent Python code**: The Python code that was used to run the analysis with descriptions for each section of code.
 6. **Technical Details**: The input settings that we're used to run the analysis. This can be copied and pasted directly into the "Settings" on the Add-in tab to run the exact same analysis again. The add-in version and the time for each step of the analysis are also noted.
+
+## Advanced options
+
+
+Windows users have two advanced options below the setting to give the user more control over early termination and processing speed. Mac users have ______________
+
+
+!!! Note "Early Termination"
+    If the early termination option is selected, a black Python console will pop up. Close the console to stop the analysis.
+    
+---
+
