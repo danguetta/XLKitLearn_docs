@@ -13,7 +13,7 @@ The `Edit Settings` button allows the user to design analysis like selecting the
 
 ## Selecting data
 
-The first step in any predictive analytic workflow is to specify the data that will be used in the model. The data should be in the same workbook; click on the "Click to Select" button under "Training" in the add-in dialogue, and select the entire dataset you will be using, including column headers. Click [here](Select_Small_Data.gif) for a demo.
+The first step in any predictive analytic workflow is to specify the data that will be used in the model. The data should be in the same workbook; click on the ["Click to Select"](MATSON static shot of the settings with a red box around the button) button under "Training" in the add-in dialogue, and select the entire dataset you will be using, including column headers. Click [here](Select_Small_Data.gif) for a demo.
 
 !!! warning "Adding Sheets Containing Data"
     As discussed in the [introduction](index.md), you should never move the add-in sheet *to* another workbook. If you data sits in another Excel workbook, bring the sheet containing your data *into* the add-in Excel workbook.
@@ -34,10 +34,34 @@ XLKit learn can read .csv files as well as .xlsx files; make sure to include the
 !!! warning "File Existence"
     On a Windows machine, XLKitLearn will automatically check whether the file exists when you click "OK"; you will not be able to select a file that doesn't exist. Because of Mac security settings, XLKitLearn won't be able to check this immediately on a Mac - you'll need to press "run" and launch Python before finding out whether the file can be loaded.
 
-
 ---
 
 ## Specifying a Formula
+
+The linchpin of any predictive analytic workflow in XLKitLearn is the formula, which specifies the *outcome* variable to be predicted (the dependent or 'y' variable) and the features that will be used to predict this variable (the independent or 'x' variables). The formula should be input into the [formula box](MATSON static shot of the settings with a red box around the box).
+
+XLKitLearn formulas are always provided in the following format
+
+`dependent variable ~ independent variable 1 + independent variable 2 + ...`
+
+Variables are referred to using the columns names in the data.
+
+For example, suppose you are fitting a model on the Boston housing dataset provided by XLKitLearn, and that we wanted to predict the median house price using the crime per capita and the average number of rooms per dwelling. The formula would then be
+
+`median_property_value ~ crime_per_capita + av_rooms_per_dwelling`
+
+### The Formula Editor
+
+You can always type the formula into the [formula box](MATSON static shot of the settings with a red box around the box) manually. To make things easier for you, XLKitLearn makes a formula editor available, which will prevent you from typing the name of every variable manually.
+
+To launch the formula editor, click on the [three dots](MATSON gif of clicking on the three dots and loading the formula editor) next to the formula box.
+
+The formula editor contains a list at the left listing all the variables in the selected data (whether in Excel or in an external file)
+
+!!! warning "Variables Names"
+    In the following circumstances, XLKitLearn will not be able to load variable names from the file and display them in the formula editor:
+      - If you are loading a .xlsx file, XLKitLearn will not be able to open the file and read column names.
+      - If you are on a Mac and loading an external file, Mac security settings will stop XLKitLearn from opening the file and reading column names. 
 
 XLKitLearn's formula editor can be accessed by clicking on the three dots to the right of the formula box in the settings. The formula editor lists all the headers in the training data on the left, and provides a larger area in which to enter a formula on the right.
 
