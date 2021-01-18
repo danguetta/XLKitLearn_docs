@@ -85,7 +85,7 @@ The formula language used by XLKitLearn also allows you to seamlessly transform 
 
 !!! warning "Categorical Variables and `~.`"
         As mentioned above, any column containing non-numerical values that is explicitly named in the formula will automatically be treated as a categorical variable. This, however, is not true of variables that are implicitely included using `~.`.
-* **Creating a yes/no outcomes**: As described [below](#specifying-a-predictive-model), XLKitLearn will automatically interpret any formula in which the outcome column contains only 0s and 1s as a classification task. In some cases, the outcome column contains other values, but the model still needs to be treated as a classification task. In those circumstances, XLKitLearn allows you to automatically convert the outcome variable to '1' when it is equal to a certain value, and 0 otherwise. This is best illustrated by example. Suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict whether the highway accessibility is equal to 4 or not using every other column in the data. You could use the following formula:
+* **Creating a yes/no outcomes**: XLKitLearn will [automatically interpret](#regression-vs-classification) any formula in which the outcome column contains only 0s and 1s as a classification task. In some cases, the outcome column contains other values, but the model still needs to be treated as a classification task. In those circumstances, XLKitLearn allows you to automatically convert the outcome variable to '1' when it is equal to a certain value, and 0 otherwise. This is best illustrated by example. Suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict whether the highway accessibility is equal to 4 or not using every other column in the data. You could use the following formula:
     ```(highway_accessibility = 4) ~ .```
     The model will then interpret all rows in which highway accessibility is 4 as a '1' outcome, and '0' otherwise. Note that this only works with `~.` formula (i.e., those that use every variable in the dataset).
 
@@ -95,16 +95,26 @@ Note that XLKitLearn's formulas leverage the [Patsy](https://patsy.readthedocs.i
 
 ## Specifying a Predictive Model
 
-The second major ingredient of any predictive analytic workflow
+The second major ingredient of any predictive analytic workflow is the model that will be trained and used to make predictions. The model can be selected in the [model dropdown](MATSON static screenshot with the model dropdown opened, and a red box around it).
 
+Some predictive models require parameters to be specified. In those cases, the parameters can be specified in the [parameter section](MATSON static screenshot with a read box around the parameter section), which will update to list the parameters required for the specific model select.
 
----
+### Regression vs Classification
 
-### Supported predictive models
+For each of its models, XLKitLearn supports both regression models (with continuous outcomes) and classification models (with 0/1 outcomes). XLKitLearn will automatically be determine the type of model required - if the outcome column (as specified in the [formula](#specifying-a-formula)) only contains 0's and 1's, a classification model will be fit. Otherwise, a regression model will e fit.
 
-The following predictive models can be chosen from the dropdown.
+Note that XLKitLearn does not support classification models with more than two possible outcomes.
 
-1. **Linear and logistic regression**: XLKitLearn will automatically determine whether a continuous [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model or a binary [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) model should be used. If the dependent variable in the model contains 0s or 1s only (_or_ if the dependent variable is a [logical statement](#logical-dependent-var)), a logistic regression model will be used. Otherwise, a linear regression model will be used. Note that XLKitLearn does not support classification models with more than two possible outcomes. XLKitLearn makes one unique parameter available for these models - the [Lasso penalty](https://en.wikipedia.org/wiki/Lasso_(statistics)). This parameter should either be specified as a number indicating the weight of the Lasso penalty _or_ can be set to ```BS``` to perform best subset selection. Compare multiple lasso penalties by separating entries with an ```&```.
+### Supported models
+
+XLKitLearn supports the following models:
+
+1. **Linear and logistic regression**: depending on whether a [regression or classification](#regression-vs-classification) model is required, XLKitLearn will fit a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model or a [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) on the data.
+
+    XLKitLearn makes one unique parameter available for these models - the [Lasso penalty](https://en.wikipedia.org/wiki/Lasso_(statistics)). 
+      - sfd
+      - sdfdsf
+    This parameter should either be specified as a number indicating the weight of the Lasso penalty _or_ can be set to ```BS``` to perform best subset selection. Compare multiple lasso penalties by separating entries with an ```&```.
 
 2. **Decision tree**: A simple [decision tree](https://en.wikipedia.org/wiki/Decision_tree_learning) will be fit using CART. `Tree depth` is the only unique parameter that needs to be chosen; multiple depths can be compared by separating depths with an ```&```.
 
