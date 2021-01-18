@@ -46,7 +46,7 @@ XLKitLearn formulas are always provided in the following format
 
 Variables are referred to using the columns names in the data.
 
-For example, suppose you are fitting a model on the Boston housing dataset provided by XLKitLearn, and that we wanted to predict the median house price using the crime per capita and the average number of rooms per dwelling. The formula would then be
+For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price using the crime per capita and the average number of rooms per dwelling. The formula would then be
 
 `median_property_value ~ crime_per_capita + av_rooms_per_dwelling`
 
@@ -61,21 +61,28 @@ The formula editor contains a [list at the left](MATSON static shot of the formu
 The formula editor also supports auto-complete for quicker formula entry. As variable names are typed in the formula entry box, the list on the left is filtered down to variables that begin with those letters, and the first such variable is automatically suggested. Pressing the Tab key will complete the name of that variable. Click [here](Formula_Editor.gif) for a demo.
 
 !!! warning "Variables Names in External Files"
-    In the following circumstances, XLKitLearn will not be able to load variable names from the file and display them in the formula editor. (1) If you are loading a .xlsx file, XLKitLearn will not be able to open the file and read column names. (2) If you are on a Mac and loading an external file, Mac security settings will stop XLKitLearn from opening the file and reading column names. 
-      * sfsdf
-      * sdfdsf
+    In the following circumstances, XLKitLearn will not be able to load variable names from the file and display them in the formula editor. (1) If you are loading a .xlsx file, XLKitLearn will not be able to open the file and read column names. (2) If you are on a Mac and loading an external file, Mac security settings will stop XLKitLearn from opening the file and reading column names.
 
 If the formula you entered contains an error, the formula input box will turn red, and an error message will be displayed in the [bottom part](MATSON static shot of the formula editor with a red box around the error area) of the formula editor.
 
 ### Advanced XLKitLearn Formulas
 
-In addition to 
+The formula language used by XLKitLearn also allows you to seamlessly transform variables in your data in a number of useful ways:
 
-The following advanced features are available:
-
-
-* **Categorical**: Variables that have numerical values can be changed into categorical variables by using the following structure in the [formula editor](#the-formula-editor) `C(variable_1) + variable_2....`
-> Any variable with text in it is automatically converted into a categorical variable with the base category dropped.
+* **Creating categorical variables**: When a variable needs to be treated as [categorical](https://en.wikipedia.org/wiki/Categorical_variable), XLKitLearn can automatically create [dummy variables](https://en.wikipedia.org/wiki/Dummy_variable_(statistics)) on the fly. Simply surround the variable with `C()`. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price using the crime per capita and the highway accessibility treated as a categorical. The formula would be
+    `median_property_value ~ crime_per_capita + C(highway_accessibility)`
+    A few notes
+      * When a variable is treated as categorical, dummies will always be created for every possible value of that variable. The first dummy (in alphabetical order) will then be [dropped](https://en.wikipedia.org/wiki/Dummy_variable_(statistics)) from the model.
+      * Any column containing non-numerical values will automatically be created as a categorical, with or without the `C()` around it.
+* **Standardizing variables**: Surrounding any variable with `standardize()` will subtract the mean of that variable form every value in the column, and divide by its standard deviation. This can be particularly useful when comparing the size of coefficients in a linear regression. Note that when using training and test sets, this transformation will be done correctly; the mean of the *training* set will be used to standardize variables in the evaluation set.
+* **Removing the intercept**: An intercept will be added to the formula by default. Adding `-1` at the end of the formula will remove the intercept.
+* **Applying Python functions**: Any Python function can be used as part of a formula; `numpy` functions can be accessed using `np.`. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price using the crime per capita and the crime per capita squared. The formula would be
+    `median_property_value ~ crime_per_capita + np.power(crime_per_capita, 2)`
+* **Including all variables**: to include every variable in the data as independent variables in your model, simply use `~.`. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price using every other variable in the data. The formula would then be
+    `median_property_value ~ .`
+    !!! warning "Categorical Variables and `~.`"
+        As mentioned above, any column containing non-numerical values that is explicitly named in the formula will automatically be treated as a categorical variable. This, however, is not true of variables that are implicitely included using `~.`.
+* **Creating a yes/no outcomes**:
 
 * **Dot formulas**: Include all variables in the model by using the formula `y~.`
 
