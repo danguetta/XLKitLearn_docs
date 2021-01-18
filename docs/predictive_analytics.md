@@ -83,6 +83,7 @@ The formula language used by XLKitLearn also allows you to seamlessly transform 
     `median_property_value ~ crime_per_capita + np.power(crime_per_capita, 2)`
     
 * **Including all variables**: to include every variable in the data as independent variables in your model, simply use `~.`. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price using every other variable in the data. The formula would then be
+
     `median_property_value ~ .`
 
 !!! warning "Categorical Variables and `~.`"
