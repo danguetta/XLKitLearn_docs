@@ -56,28 +56,21 @@ You can always type the formula into the [formula box](MATSON static shot of the
 
 To launch the formula editor, click on the [three dots](MATSON gif of clicking on the three dots and loading the formula editor) next to the formula box.
 
-The formula editor contains a list at the left listing all the variables in the selected data (whether in Excel or in an external file)
+The formula editor contains a [list at the left](MATSON static shot of the formula editor with a red box around the list) listing all the variables in the selected data (whether in Excel or in an external file). It also contains a [larger textbox](MATSON static shot of the formula editor with a red box around the larger textbox) in which to type your formula.
 
-!!! warning "Variables Names"
-    In the following circumstances, XLKitLearn will not be able to load variable names from the file and display them in the formula editor:
-      - If you are loading a .xlsx file, XLKitLearn will not be able to open the file and read column names.
-      - If you are on a Mac and loading an external file, Mac security settings will stop XLKitLearn from opening the file and reading column names. 
+The formula editor also supports auto-complete for quicker formula entry. As variable names are typed in the formula entry box, the list on the left is filtered down to variables that begin with those letters, and the first such variable is automatically suggested. Pressing the Tab key will complete the name of that variable. Click [here](Formula_Editor.gif) for a demo.
 
-XLKitLearn's formula editor can be accessed by clicking on the three dots to the right of the formula box in the settings. The formula editor lists all the headers in the training data on the left, and provides a larger area in which to enter a formula on the right.
+!!! warning "Variables Names in External Files"
+    In the following circumstances, XLKitLearn will not be able to load variable names from the file and display them in the formula editor. (1) If you are loading a .xlsx file, XLKitLearn will not be able to open the file and read column names. (2) If you are on a Mac and loading an external file, Mac security settings will stop XLKitLearn from opening the file and reading column names. 
+      * sfsdf
+      * sdfdsf
 
-!!! warning "Mac User Connectivity"
-    When data from an external file is used, Mac security settings do not allow XLKitLearn to open the file and read the headers. Thus, the formula editor will _not_ work when external data is used on a Mac computer.
-
-The formula editor also supports auto-complete for quicker formula entry. As variable names are typed in the formula entry box, the list on the left is filtered down to variables that begin with those letters, and the first such variable is automatically suggested. Pressing the Tab key will complete the name of that variable:
-
-![](Formula_Editor.gif)
-
-!!! note "Errors"
-    As in other parts of the add-in, a red input box indicates an error in the formula; the specific error will be displayed in the area at the bottom of the formula editor.
-
----
+If the formula you entered contains an error, the formula input box will turn red, and an error message will be displayed in the [bottom part](MATSON static shot of the formula editor with a red box around the error area) of the formula editor.
 
 ### Advanced XLKitLearn Formulas
+
+In addition to 
+
 The following advanced features are available:
 
 
