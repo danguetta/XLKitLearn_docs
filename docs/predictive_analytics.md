@@ -133,12 +133,24 @@ For specific details on how these models are implemented, see the [generated Pyt
 ---
 
 ## Parameter Tuning
-Specifying the number of folds in the settings will tell the add-in to run a [k-fold cross validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) with the given number of folds. The training and test data will be randomly sorted into folds based upon the [Randomization Seed](https://en.wikipedia.org/wiki/Random_seed) then all regressions will be automatically run. The model with the highest average out-of-sample score for the training data will used on the evaluation dataset if an [evaluation dataset](#Specifying_an_evaluation_set) is specified.
 
-Two or more models can be compared using an ```&``` to separate each model in the [formula editor](#the-formula-editor).
+XLKitLearn supports [K-fold cross validation]((https://en.wikipedia.org/wiki/Cross-validation_(statistics))) for parameter tuning. The model that performs *best* on all the folds on average will be selected and fitted on the entire data.
 
-!!! success "Replicating Analysis"
-    Using the same `Randomization Seed` can enable two users to generate the same random order. Enter a random list of numbers once the model is finished to truly randomly sort the data.
+In particular, for any of the parameters described [above](#supported-models), multiple values of the parameters can be compared against each other by specifying several values of the parameters, separated by `&` signs. For example, if you are fitting a decision tree and would like to compare trees of depth 2, 3, and 4, you should enter `2 & 3 & 4` under the "tree depth" parameter for the decision tree.
+
+In addition to comparing multiple parameters against each other, you can also test multiple formulas against each other. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price. To compare a model that makes this prediction using `crime_per_capita` to one that makes this prediction using `av_rooms_per_dwelling`, you would type the following formula into XLKitLearn:
+
+`median_property_value ~ crime_per_capita & median_property_value ~ av_rooms_per_dwelling`
+
+!!! note "Comparing two Formulas"
+        Note that when comparing two formulas, the dependent variable (`median_property_value` above) needs to be repeated for each formula.
+
+XLKitLearn allows you to specify the number of folds to use; simply enter the number in the [appropriate box](MATSON static shot with a red box round the number of folds box).
+
+!!! note "Required Cross Validation"
+        If your model requires cross-validation (i.e., if you are testing multiple parameters or formulas against each other) but you do not specify the number of folds, the "folds" box will turn red to remind you this parameter is required. Remember that when fitting a boosted decision tree, cross-validation is *always* required.
+        
+The folds will be split randomly, using the [randomization seed](#the-randomization-seed) provided in the add-in.
 
 ---
 
