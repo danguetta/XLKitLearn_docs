@@ -80,15 +80,12 @@ The formula language used by XLKitLearn also allows you to seamlessly transform 
     `median_property_value ~ crime_per_capita + np.power(crime_per_capita, 2)`
 * **Including all variables**: to include every variable in the data as independent variables in your model, simply use `~.`. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price using every other variable in the data. The formula would then be
     `median_property_value ~ .`
-    !!! warning "Categorical Variables and `~.`"
+!!! warning "Categorical Variables and `~.`"
         As mentioned above, any column containing non-numerical values that is explicitly named in the formula will automatically be treated as a categorical variable. This, however, is not true of variables that are implicitely included using `~.`.
-* **Creating a yes/no outcomes**:
+* **Creating a yes/no outcomes**: 
 
-* **Dot formulas**: Include all variables in the model by using the formula `y~.`
+Note that XLKitLearn's formula feature builds on the Python library [Patsy](https://patsy.readthedocs.io/en/latest). Any formula features available in Patsy can also be used in XLKitLearn.
 
-* **Standardization**: Standardize each variable by using the following structure `standard(variable_1) + standard(variable_2)....`
-* **Python formulas** @guetta I think I missed this one??
-* **Removing the intercept**: The intercept can be removed in the [formula editor](#the-formula-editor) by adding a `-1` after the formula
 ---
 
 ## Specifying a Predictive Model
