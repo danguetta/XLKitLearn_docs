@@ -120,9 +120,9 @@ XLKitLearn supports the following models:
 
 3. **Boosted decision tree**: A [boosted decision tree](https://en.wikipedia.org/wiki/Gradient_boosting) fit using gradient boosting. XLKitLearn makes the following parameter(s) available for this model:
     * The tree depth, which determines the maximum depth of each tree in the ensemble
-    * The maximum number of trees in the ensemble. It is important to note that boosted trees do not always continue improving as extra trees are added - after a certain point, performance drops. Thus, after fitting the number of trees specified by this parameter, XLKitLearn will automatically determine whether some smaller number of trees performs better on the left-out folds in K-fold cross validation. For this reason, boosted decision trees *always* need a value for K in the [parameter tuning](#parameter-tuning) section of the addin, even when multiple parameters are not being compared against each other.
+    * The maximum number of trees in the ensemble.
+    > Boosted trees do not always continue improving as extra trees are added - after a certain point, performance drops. Thus, after fitting the number of trees specified by this parameter, XLKitLearn will automatically determine whether some smaller number of trees performs better on the left-out folds in K-fold cross validation. For this reason, boosted decision trees *always* need a value for K in the [parameter tuning](#parameter-tuning) section of the addin, even when multiple parameters are not being compared against each other.
     * The learning rate for the gradient boosting procedure
-> Only the tree depth should be compared because XLKitLearn will automatically generate trees based on the max number of trees.
 
 4. **Random forest**: A [random forest](https://en.wikipedia.org/wiki/Random_forest). XLKitLearn makes the following parameter(s) available for this model:
     * The tree depth, which determines the maximum depth of each tree in the ensemble
