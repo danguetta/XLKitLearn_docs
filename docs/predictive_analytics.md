@@ -1,5 +1,11 @@
 # Predictive Analytics
 
+XLKitLearn's predictive analytics add-in allows you to fit a range of predictive models in Excel. There are two main ingredients to any predictive analytic workflow
+
+XLKitLearn predictive models comprise two main ingredients:
+
+1. The predictive model to be used, and any parameters required to fit this model.
+2. The variable that needs to be predicted (the dependent variable) as well as the variables that should be used to predict it (the independent variables).
 
 ## Getting started
 While this is a Python-based add-in, no Python knowledge is needed nor are any downloads besides the XLKit Learn excel file.
@@ -38,7 +44,7 @@ XLKit learn can read .csv files as well as .xlsx files; make sure to include the
 
 ## Specifying a Formula
 
-The linchpin of any predictive analytic workflow in XLKitLearn is the formula, which specifies the *outcome* variable to be predicted (the dependent or 'y' variable) and the features that will be used to predict this variable (the independent or 'x' variables). The formula should be input into the [formula box](MATSON static shot of the settings with a red box around the box).
+The first component of any predictive analytic workflow in XLKitLearn is the formula, which specifies the *outcome* variable to be predicted (the dependent or 'y' variable) and the features that will be used to predict this variable (the independent or 'x' variables). The formula should be input into the [formula box](MATSON static shot of the settings with a red box around the box).
 
 XLKitLearn formulas are always provided in the following format
 
@@ -74,8 +80,9 @@ The formula language used by XLKitLearn also allows you to seamlessly transform 
     `median_property_value ~ crime_per_capita + C(highway_accessibility)`
     
     A few notes
-      * When a variable is treated as categorical, dummies will always be created for every possible value of that variable. The first dummy (in alphabetical order) will then be [dropped](https://en.wikipedia.org/wiki/Dummy_variable_(statistics)) from the model.
-      * Any column containing non-numerical values will automatically be created as a categorical, with or without the `C()` around it.
+      - When a variable is treated as categorical, dummies will always be created for every possible value of that variable. The first dummy (in alphabetical order) will then be [dropped](https://en.wikipedia.org/wiki/Dummy_variable_(statistics)) from the model.
+      - Any column containing non-numerical values will automatically be created as a categorical, with or without the `C()` around it.
+      
 * **Standardizing variables**: Surrounding any variable with `standardize()` will subtract the mean of that variable form every value in the column, and divide by its standard deviation. This can be particularly useful when comparing the size of coefficients in a linear regression. Note that when using training and test sets, this transformation will be done correctly; the mean of the *training* set will be used to standardize variables in the evaluation set.
 * **Removing the intercept**: An intercept will be added to the formula by default. Adding `-1` at the end of the formula will remove the intercept.
 * **Applying Python functions**: Any Python function can be used as part of a formula; `numpy` functions can be accessed using `np.`. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price using the crime per capita and the crime per capita squared. The formula would be
@@ -98,10 +105,7 @@ Note that XLKitLearn's formula feature builds on the Python library [Patsy](http
 
 ## Specifying a Predictive Model
 
-XLKitLearn predictive models comprise two main ingredients:
 
-1. The predictive model to be used, and any parameters required to fit this model.
-2. The variable that needs to be predicted (the dependent variable) as well as the variables that should be used to predict it (the independent variables).
 
 The model can be selected among [models available](#supported-predictive-models) in the `Model` dropdown, and its parameters can be specified in the `Parameter(s)` box below.
 
