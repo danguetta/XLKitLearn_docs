@@ -1,21 +1,11 @@
 # Predictive Analytics
 
-XLKitLearn's predictive analytics add-in allows you to fit a range of predictive models in Excel. There are two main ingredients to any predictive analytic workflow
+XLKitLearn's predictive analytics add-in allows you to fit a range of predictive models in Excel. The first step to any predictive analytics is to [specify the data](#selecting-data) you want to use. There are then two main ingredients to any predictive analytic workflow in XLKitLearn:
 
-XLKitLearn predictive models comprise two main ingredients:
+1. The variable that needs to be predicted (the dependent variable) as well as the variables that should be used to predict it (the independent variables). This is specified using a [formula](#specifying-a-formula).
+2. The [predictive model](#specifying-a-predictive-model) to be used, and any parameters required to fit this model.
 
-1. The predictive model to be used, and any parameters required to fit this model.
-2. The variable that needs to be predicted (the dependent variable) as well as the variables that should be used to predict it (the independent variables).
-
-## Getting started
-While this is a Python-based add-in, no Python knowledge is needed nor are any downloads besides the XLKit Learn excel file.
-
-An email needs to be entered before running any analyses. Email addresses are used to track bugs. Neither email nor analyses will be shared with any outside party.
-
-The `Edit Settings` button allows the user to design analysis like selecting the data, specifying the model, determining the formulas and training criteria. Every time the model is run, the outputs are added as a new tab.
-
-
----
+The predictive analytic add-in also includes full support for training and test sets, parameter tuning through K-Fold cross-validation, and predictions on new datasets.
 
 ## Selecting data
 
@@ -24,7 +14,7 @@ The first step in any predictive analytic workflow is to specify the data that w
 !!! warning "Adding Sheets Containing Data"
     As discussed in the [introduction](index.md), you should never move the add-in sheet *to* another workbook. If you data sits in another Excel workbook, bring the sheet containing your data *into* the add-in Excel workbook.
     
-!!! warning "Column Names"
+!!! note "Column Names"
     The first row of your data should contain column names. There are a number of rules these column names must satisfy. They must contain only letters, numbers, and underscores - no spaces - and cannot start with a number. They are also case-sensitive.
     
 ---
@@ -37,7 +27,7 @@ For those situations, XLKitLearn allows you to read data directly from a source 
 
 XLKit learn can read .csv files as well as .xlsx files; make sure to include the file extension (.csv or .xslx) when you specify the file name.
 
-!!! warning "File Existence"
+!!! note "File Existence"
     On a Windows machine, XLKitLearn will automatically check whether the file exists when you click "OK"; you will not be able to select a file that doesn't exist. Because of Mac security settings, XLKitLearn won't be able to check this immediately on a Mac - you'll need to press "run" and launch Python before finding out whether the file can be loaded.
 
 ---
@@ -66,7 +56,7 @@ The formula editor contains a [list at the left](MATSON static shot of the formu
 
 The formula editor also supports auto-complete for quicker formula entry. As variable names are typed in the formula entry box, the list on the left is filtered down to variables that begin with those letters, and the first such variable is automatically suggested. Pressing the Tab key will complete the name of that variable. Click [here](Formula_Editor.gif) for a demo.
 
-!!! warning "Variables Names in External Files"
+!!! note "Variables Names in External Files"
     In the following circumstances, XLKitLearn will not be able to load variable names from the file and display them in the formula editor. (1) If you are loading a .xlsx file, XLKitLearn will not be able to open the file and read column names. (2) If you are on a Mac and loading an external file, Mac security settings will stop XLKitLearn from opening the file and reading column names.
 
 If the formula you entered contains an error, the formula input box will turn red, and an error message will be displayed in the [bottom part](MATSON static shot of the formula editor with a red box around the error area) of the formula editor.
@@ -99,26 +89,14 @@ The formula language used by XLKitLearn also allows you to seamlessly transform 
     ```(highway_accessibility = 4) ~ .```
     The model will then interpret all rows in which highway accessibility is 4 as a '1' outcome, and '0' otherwise. Note that this only works with `~.` formula (i.e., those that use every variable in the dataset).
 
-Note that XLKitLearn's formula feature builds on the Python library [Patsy](https://patsy.readthedocs.io/en/latest). Any formula features available in Patsy can also be used in XLKitLearn. Some of the features described above, however, are not directly available in patsy.
+Note that XLKitLearn's formulas leverage the [Patsy](https://patsy.readthedocs.io/en/latest) Python library, which itself approximates [R](https://www.r-project.org/)-style formulas. Any formula features available in Patsy can also be used in XLKitLearn. Some of the features described above, however, are not directly available in patsy.
 
 ---
 
 ## Specifying a Predictive Model
 
+The second major ingredient of any predictive analytic workflow
 
-
-The model can be selected among [models available](#supported-predictive-models) in the `Model` dropdown, and its parameters can be specified in the `Parameter(s)` box below.
-
-To specify the dependent and independent variables, XLKitLearn leverages the [patsy](https://patsy.readthedocs.io/en/latest/) library to allow the specification of these variables as a _Patsy formula_ (similar but not identical to [R](https://www.r-project.org/)-style formulas). It also adds a number of [features](#advanced-xlkitlearn-formulas) above and beyond those available in Patsy.
-
-The basic structure of each formula is as follows:
-
-`[Dependent Variable] ~ [Independent Variable 1] + [Independent Var. 2] + ...`
-
-Formulas can be typed directly into the formula box of the add-in settings, or using the [formula editor](#the-formula-editor).
-
-!!! note "Specify Variables"
-    Each variable should be referred to by the column headers in the first row of the [training data](#selecting-data).
 
 ---
 
