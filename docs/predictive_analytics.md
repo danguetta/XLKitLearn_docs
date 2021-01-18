@@ -109,19 +109,26 @@ Note that XLKitLearn does not support classification models with more than two p
 
 XLKitLearn supports the following models:
 
-1. **Linear and logistic regression**: depending on whether a [regression or classification](#regression-vs-classification) model is required, XLKitLearn will fit a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model or a [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) on the data.
+1. **Linear and logistic regression**: depending on whether a [regression or classification](#regression-vs-classification) model is required, XLKitLearn will fit a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model or a [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) on the data. XLKitLearn makes the following parameter(s) available for this model
+    * The [Lasso penalty](https://en.wikipedia.org/wiki/Lasso_(statistics)), which can be specified in one of three ways
+        - If it is left blank, XLKitLearn will assume it is equal to 0, and fit an unpenalized linear model
+        - It can be set to a single numerical value to specify the weight of the Lasso penalty in the model
+        - If it set to the special value ```BS```, XLKitLearn will perform best-subset selection, in which every possible combinations of the variables provided will be tested against each other will be K-fold cross validation. Note that this option is only available when the formula includes fewer than 10 variables        
 
-    XLKitLearn makes one unique parameter available for these models - the [Lasso penalty](https://en.wikipedia.org/wiki/Lasso_(statistics)). 
-      - sfd
-      - sdfdsf
-    This parameter should either be specified as a number indicating the weight of the Lasso penalty _or_ can be set to ```BS``` to perform best subset selection. Compare multiple lasso penalties by separating entries with an ```&```.
+2. **Decision tree**: A simple [decision tree](https://en.wikipedia.org/wiki/Decision_tree_learning) will be fit using CART. The splitting criterion will be chosen based on whether a [regression or classification](#regression-vs-classification) model is required; the mean-squared-error for the former, and the gini impurity for the latter. XLKitLearn makes the following parameter(s) available for this model
+    * The tree depth, which determines the maximum depth of the tree
 
-2. **Decision tree**: A simple [decision tree](https://en.wikipedia.org/wiki/Decision_tree_learning) will be fit using CART. `Tree depth` is the only unique parameter that needs to be chosen; multiple depths can be compared by separating depths with an ```&```.
-
-3. **Boosted decision tree**: A boosted decision tree based on the given `Tree depth`, `Max trees` and `Learning rate`. Different tree depths can be compared by using an `&`.
+3. **Boosted decision tree**: A [boosted decision tree](https://en.wikipedia.org/wiki/Gradient_boosting) fit using gradient boosting. XLKitLearn makes the following parameter(s) available for this model:
+    * The tree depth, which determines the maximum depth of each tree in the ensemble
+    * The maximum number of trees in the ensemble. It is important to note that boosted trees do not always continue improving as extra trees are added - after a certain point, performance drops. Thus, after fitting the number of trees specified by this parameter, XLKitLearn will automatically determine whether some smaller number of trees performs better on the left-out folds in K-fold cross validation. For this reason, boosted decision trees *always* need a value for K in the [parameter tuning](#parameter-tuning) section of the addin, even when multiple parameters are not being compared against each other.
+    * The learning rate for the gradient boosting procedure
 > Only the tree depth should be compared because XLKitLearn will automatically generate trees based on the max number of trees.
 
-4. **Random forest**: Fit a random forest based on `Number of trees` and `Tree depth` which can be compared with an `&`.
+4. **Random forest**: A [random forest](https://en.wikipedia.org/wiki/Random_forest). XLKitLearn makes the following parameter(s) available for this model:
+    * The tree depth, which determines the maximum depth of each tree in the ensemble
+    * The number of trees in the ensemble
+
+For specific details on how these models are implemented, see the [generated Python code](MATSON link to the generated python code in the main intro page) for each model - these generated pieces of code will illustrate how SciKitLearn packages are used to fit each of these models.
 
 ---
 
