@@ -80,11 +80,14 @@ The formula language used by XLKitLearn also allows you to seamlessly transform 
     `median_property_value ~ crime_per_capita + np.power(crime_per_capita, 2)`
 * **Including all variables**: to include every variable in the data as independent variables in your model, simply use `~.`. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price using every other variable in the data. The formula would then be
     `median_property_value ~ .`
+
 !!! warning "Categorical Variables and `~.`"
         As mentioned above, any column containing non-numerical values that is explicitly named in the formula will automatically be treated as a categorical variable. This, however, is not true of variables that are implicitely included using `~.`.
-* **Creating a yes/no outcomes**: 
+* **Creating a yes/no outcomes**: As described [below](#specifying-a-predictive-model), XLKitLearn will automatically interpret any formula in which the outcome column contains only 0s and 1s as a classification task. In some cases, the outcome column contains other values, but the model still needs to be treated as a classification task. In those circumstances, XLKitLearn allows you to automatically convert the outcome variable to '1' when it is equal to a certain value, and 0 otherwise. This is best illustrated by example. Suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict whether the highway accessibility is equal to 4 or not using every other column in the data. You could use the following formula:
+    ```(highway_accessibility = 4) ~ .```
+    The model will then interpret all rows in which highway accessibility is 4 as a '1' outcome, and '0' otherwise. Note that this only works with `~.` formula (i.e., those that use every variable in the dataset).
 
-Note that XLKitLearn's formula feature builds on the Python library [Patsy](https://patsy.readthedocs.io/en/latest). Any formula features available in Patsy can also be used in XLKitLearn.
+Note that XLKitLearn's formula feature builds on the Python library [Patsy](https://patsy.readthedocs.io/en/latest). Any formula features available in Patsy can also be used in XLKitLearn. Some of the features described above, however, are not directly available in patsy.
 
 ---
 
