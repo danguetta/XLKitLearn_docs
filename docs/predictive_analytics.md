@@ -2,23 +2,23 @@
 
 XLKitLearn's predictive analytics add-in allows you to fit a range of predictive models in Excel. There are three main components of predictive analytic workflows in XLKitLearn:
 
-1. [Specify the data](#selecting-data) to be used to train the predictive model
-2. Describe the dependent and independent variables using a [formula](#specifying-a-formula). 
-3. Select the [predictive model](#specifying-a-predictive-model) to be used and any required or optional parameters
+1. [Specify the data](#selecting-data) to be used to train the predictive model; XLKitLearn can read data from the current Excel workbook, or pull data directly from a file.
+2. Describe the dependent and independent variables using a [formula](#specifying-a-formula); XLKitLearn's formula language allows you to carry out variable transformations, automatically create dummies for categorical variables, and more.
+3. Select the [predictive model](#specifying-a-predictive-model) to be used, together with any parameters required.
 
-The predictive analytic add-in also includes full support for training and test sets, parameter tuning using K-Fold cross-validation, and predictions on new datasets.
+The predictive analytic add-in also includes full support for [training and test sets](#training-and-test-sets), [parameter tuning](#parameter-tuning) using K-Fold cross-validation, and [inference on new datasets](#making-predictions-on-new-data).
 
 ## Selecting data
 
-XLKitLearn can read data from two locations. First, data can be read from within the same workbook as the add-in. Click on the ["Click to Select"](MATSON static shot of the settings with a red box around the button) button under "Training" in the add-in dialogue, and select the entire dataset you will be using, including column headers. Click [here](Select_Small_Data.gif) for a demo.
+The simplest way to load data into XLKitLearn is to drag any sheets containing the data into the add-in workbook.
 
 !!! warning "Adding Sheets Containing Data"
     You should never move the add-in sheet *to* another workbook. If your data sits in another Excel workbook, bring the sheet containing your data *into* the add-in Excel workbook.
+
+Once the data is in your workbook, click on the ["Click to Select"](MATSON static shot of the settings with a red box around the button) button under "Training" in the add-in dialogue, and select the entire dataset you will be using, including column headers. Click [here](Select_Small_Data.gif) for a demo.
     
 !!! note "Column Names"
     The first row of your data should contain column names. There are a number of rules these column names must satisfy. They must contain only letters, numbers, and underscores - no spaces - and cannot start with a number. Column names also cannot be python reserved keywords or the word "intercept".
-
-Second, data can be read from an external file.
 
 ---
 
@@ -29,9 +29,6 @@ When working with a very large dataset, opening it in Excel may slow down your c
 For these situations, XLKitLearn allows you to read data directly from a source file, without having to open it in Excel. After clicking on "Click to select", simply type the name of the file directly into the dialogue box. Click [here](Select_Large_Data.gif) for a demo. The first row of the file should contain the column names (the same column name rules apply).
 
 XLKit learn can read .csv files as well as .xlsx files; make sure to include the file extension (.csv or .xslx) when you specify the file name.
-
-!!! note "File Existence"
-    On a Windows machine, XLKitLearn will automatically check whether the file exists when you click "OK"; you will not be able to select a file that doesn't exist. Because of Mac security settings, XLKitLearn won't be able to check this immediately on a Mac - you'll need to press "run" and launch Python before finding out whether the file can be loaded.
 
 ---
 
@@ -102,7 +99,7 @@ The formula language used by XLKitLearn also allows you to seamlessly transform 
 !!! warning "Non-numeric Columns"
         Including a non-numeric column as the dependent variable will return an error unless a yes/no outcome is created in this way.
 
-Note that XLKitLearn's formulas leverage the [Patsy](https://patsy.readthedocs.io/en/latest) Python library, which itself approximates [R](https://www.r-project.org/)-style formulas. Any formula features available in Patsy can also be used in XLKitLearn. Some of the features described above, however, are not directly available in patsy.
+Note that XLKitLearn's formulas leverage the [Patsy](https://patsy.readthedocs.io/en/latest) Python library, which itself approximates [R](https://www.r-project.org/)-style formulas. Any formula features available in Patsy can also be used in XLKitLearn. Some of the features described above, however, are not directly available in Patsy.
 
 ---
 
@@ -132,7 +129,7 @@ XLKitLearn supports the following models:
 2. **K-Nearest Neighbors**: A simple k-nn regressor or classifier will be fit on the data. XLKitLearn makes the following parameter(s) available for this model
    
     * The number of neighbors, K
-    * The weighting to be used when averaging neighboring values. This parameter can take four possible values: 'uniform' (or 'u'), and 'distance' (or 'd'). In the case of uniform weighting, all neighbors will be weighted equally, and in the case of distance weighting, closer neighbors will be weighted more heavily and distant neighbors will be weighted less. If this field is left blank, uniform weighting will be used by default.
+    * The weighting to be used when averaging neighboring values. This parameter can take two possible values: 'uniform' (or 'u'), and 'distance' (or 'd'). In the case of uniform weighting, all neighbors will be weighted equally, and in the case of distance weighting, closer neighbors will be weighted more heavily and distant neighbors will be weighted less. If this field is left blank, uniform weighting will be used by default.
     
 2. **Decision Tree**: A simple [decision tree](https://en.wikipedia.org/wiki/Decision_tree_learning) will be fit using CART. The splitting criterion will be chosen based on whether a [regression or classification](#regression-vs-classification) model is required; the mean-squared-error for the former, and the gini impurity for the latter. XLKitLearn makes the following parameter(s) available for this model
    
@@ -176,51 +173,77 @@ The folds will be split randomly, using the [randomization seed](#the-randomizat
 
 ---
 
-## Training and Test Sets
-XLKitLearn is able to work with separate training and test datasets. Test datasets are specified in the 'Evaluation' section of the add-in in a number of ways. First, a test dataset can be automatically generated as a percentage of the provided training set. Second, a test dataset can be specified manually in the same way the training data is specified. By default, the `No evaluation set` option is selected.
+## Training and Evaluation Sets
+XLKitLearn is able to work with separate training and evaluation datasets. Evaluation datasets are specified in the 'Evaluation' section of the add-in in a number of ways. First, a test dataset can be automatically generated as a percentage of the provided training set. Second, a test dataset can be specified manually in the same way the training data is specified. By default, the `No evaluation set` option is selected.
 
-!!! warning "Crashing"
-    As the evaluation dataset is output in its entirety, be careful not to generate an evaluation dataset that is too large, or Excel may crash.
+DREW - expand this section a little, with bullets for each of the three options, referring to the randomization seed, etc... For the "select new set" feature, make sure you describe the requirement on column names
 
+!!! warning "Large evaluation datasets"
+    If the evaluation dataset you provide is large, XLKitLearn will output it to a file directly rather than to the output Excel spreadsheet.
+    
 ---
 
 ## Making Predictions on New Data
+
 Make predictions on new input data using the `Make predictions for new data` section. The model with the highest out-of-sample score is used to make predictions on the new data and the predicted outcomes will be added to the output.
+
+(DREW - refer back to requirements for column names above)
 
 ---
 
 ## The Randomization Seed
 
-XLKitLearn uses the randomization seed in a number of ways:
+The randomizing seed determines the choices XLKitLearn makes whenever randomizing is required. This includes
 
-1. Random splitting of training data into training and test datasets
-2. Random splitting of training data into K folds for cross validation
-3. Random permuting of features when fitting decision tree models (decision tree, boosted decision tree, random forest)
+1. The random splitting of training data into training and test datasets
+2. The random splitting of training data into K folds for cross validation
+3. The randomness involved in fitting models (eg: the random features selected in each tree of a random forest)
 
-The default value of the randomization seed is 123.
+If the add-in is run twice with the same randomization seed, the results will be *identical*. This can be useful in a classroom setting, to ensure the entire class gets the same answer.
 
 ---
 
 ## Understanding the Predictive Add-in Output
-The model output is dynamic based on the selected model and dataset. Depending on model type and parameters, not all of the following sections will be returned. The output will be separated into:
+The model output is dynamic based on the selected model and dataset. Depending on model type and parameters, not all of the following sections will be returned.
 
+DREW - I think we need a little more in each section here; perhaps you can take a second pass, and I'll them provide some comments on top?
 
-1. **Parameter Tuning**: First is a table summarizing the results of the k-fold cross-validation. Each row corresponds to one formula/parameter combination and includes the in-sample score, out-of-sample score, out-of-sample SE, formula, and parameter values. Below the table is a chart of the out-of-sample score and out-of-sample score SE by the row number. In the case of linear/logistic regression, out-of-sample score will also be shown against the number of nonzero coefficients, and for any of the decision tree models, out-of-sample score will be shown against number of trees.
-2. **Model**: This section describes the model that was fit using the training/evaluation data. If single model is run, that model is described here, if multiple models were compared, the model that returned the highest average out-of-sample score on the training set is described. First, the model formula and parameters are given, along with the in-sample score. Next, if the model is a linear/logistic regression, coefficients will be shown. For other models, variable importance will be provided in both a table and a chart.
-3. **Model Evaluation**: Lists every predicted and true outcome for the entire evaluation dataset. The AUC curve and the out-of-sample score for the evaluation set is also generated.
+### Parameter tuning
+
+First is a table summarizing the results of the k-fold cross-validation. Each row corresponds to one formula/parameter combination and includes the in-sample score, out-of-sample score, out-of-sample SE, formula, and parameter values. Below the table is a chart of the out-of-sample score and out-of-sample score SE by the row number. In the case of linear/logistic regression, out-of-sample score will also be shown against the number of nonzero coefficients, and for any of the decision tree models, out-of-sample score will be shown against number of trees.
+
+### Model
+
+This section describes the model that was fit using the training/evaluation data. If single model is run, that model is described here, if multiple models were compared, the model that returned the highest average out-of-sample score on the training set is described. First, the model formula and parameters are given, along with the in-sample score. Next, if the model is a linear/logistic regression, coefficients will be shown. For other models, variable importance will be provided in both a table and a chart.
+
+### Model evaluation
+
+Lists every predicted and true outcome for the entire evaluation dataset. The AUC curve and the out-of-sample score for the evaluation set is also generated.
+
+### Model prediction
    
-   > Very large datasets can generate evaluation datasets that are too big for excel, so be mindful of how large your evaluation dataset when deciding to include the evaluation
-   
-4. **Model Prediction**: The predicted outcomes for each input in the prediction dataset.
+The predicted outcomes for each input in the prediction dataset.
 > True outcomes will not be listed because predictions are being made on data that doesn't include outcomes
 
-5. **Equivalent Python Code**: The Python code that can be run to produce identical results, which includes significant explanation in comments. Note that for this code to run properly, it must be in the same directory as the XLKitLearn add-in Excel file.
-6. **Technical Details**: The input settings that were used to run the analysis. This can be copied and pasted directly into the "Settings" in the Add-in tab to run the exact same analysis again. The add-in version and the time for each step of the analysis are also noted.
+### Equivalent Python Code
+
+This section is XLKitLearn's crown jewel. It contains automatically generated Python code that will carry out analyses equivalent to those run by XLKitLearn.
+
+The code in this section *not* simply the code that the add-in uses. It is a dynamically generated to ensure maximal pedagogical impact. The simplest scikit learn function will always be used in this code, and plentiful comments will be included.
+
+Note that:
+  - If the data was selected from a specific sheet in the Excel workbook, the generated Python code will attempt to pull the data from the same sheet. The Excel workbook has to be open for this to work.
+  - If the data was loaded from a file, the generated Python code will attempt to pull the data from the same file. The code must therefore be in the same directory as the file.
+
+### Technical details
+
+The input settings that were used to run the analysis. This can be copied and pasted directly into the "Settings" in the Add-in tab to run the exact same analysis again. The add-in version and the time for each step of the analysis are also noted.
 
 ---
 
 ## Advanced Options
 
+DREW you clearly got tired by this point; let's take a second pass :-)
 
 Windows users have two advanced options below the settings to give the user more control over early termination and processing speed. Mac users have the option to "Attempt to terminate python". 
 
