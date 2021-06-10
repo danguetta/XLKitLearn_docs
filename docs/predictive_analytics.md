@@ -138,7 +138,7 @@ XLKitLearn supports the following models:
 3. **Boosted Decision Tree**: A [boosted decision tree](https://en.wikipedia.org/wiki/Gradient_boosting) fit using gradient boosting. XLKitLearn makes the following parameter(s) available for this model:
    
     * The tree depth, which determines the maximum depth of each tree in the ensemble
-    * The maximum number of trees in the ensemble.
+    * The maximum number of trees in the ensemble
     > Boosted trees do not always continue improving as extra trees are added - after a certain point, performance drops. Thus, after fitting the number of trees specified by this parameter, XLKitLearn will automatically determine whether some smaller number of trees performs better on the left-out folds in K-fold cross validation. For this reason, boosted decision trees *always* need a value for K in the [parameter tuning](#parameter-tuning) section of the addin, even when multiple parameters are not being compared against each other.
     * The learning rate for the gradient boosting procedure
     
@@ -176,18 +176,23 @@ The folds will be split randomly, using the [randomization seed](#the-randomizat
 ## Training and Evaluation Sets
 XLKitLearn is able to work with separate training and evaluation datasets. Evaluation datasets are specified in the 'Evaluation' section of the add-in in a number of ways. First, a test dataset can be automatically generated as a percentage of the provided training set. Second, a test dataset can be specified manually in the same way the training data is specified. By default, the `No evaluation set` option is selected.
 
-DREW - expand this section a little, with bullets for each of the three options, referring to the randomization seed, etc... For the "select new set" feature, make sure you describe the requirement on column names
+Each option is explained in depth below:
+
+1. 'Automatically generate an evaluation set with __ % of the training data': When this option is selected, the add-in will require a number (between 0 and 100) be entered in the blank. The add-in will then randomly select a portion of the training data according to the percentage indicated, and set it aside as evaluation data. The randomization seed is used to split the training data, so running the add-in multiple times with the same percentage and randomization seed will yield identical evaluation sets.
+2. 'Use a specific evaluation set': With this option, evaluation data can be selected manually, in the same way the training data is selected. Note that if column headers are included in this dataset, they must match headers in the training dataset. If headers do not match, but the number of columns do match, then the headers in the training dataset will be used. If neither headers nor the number of columns match, an error will be returned.
+3. 'No evaluation set': In this case, the entire training set will be used to train the model and no evaluation output will appear in the Excel output sheet.
 
 !!! warning "Large evaluation datasets"
     If the evaluation dataset you provide is large, XLKitLearn will output it to a file directly rather than to the output Excel spreadsheet.
     
+
 ---
 
 ## Making Predictions on New Data
 
 Make predictions on new input data using the `Make predictions for new data` section. The model with the highest out-of-sample score is used to make predictions on the new data and the predicted outcomes will be added to the output.
 
-(DREW - refer back to requirements for column names above)
+As in the case with selecting an evaluation dataset manually, column headers, if included, must match headers in the training dataset. If headers do not match, but the number of columns do match, then the headers in the training dataset will be used. If neither headers nor the number of columns match, an error will be returned.
 
 ---
 
@@ -206,30 +211,31 @@ If the add-in is run twice with the same randomization seed, the results will be
 ## Understanding the Predictive Add-in Output
 The model output is dynamic based on the selected model and dataset. Depending on model type and parameters, not all of the following sections will be returned.
 
-DREW - I think we need a little more in each section here; perhaps you can take a second pass, and I'll them provide some comments on top?
-
 ### Parameter tuning
 
 First is a table summarizing the results of the k-fold cross-validation. Each row corresponds to one formula/parameter combination and includes the in-sample score, out-of-sample score, out-of-sample SE, formula, and parameter values. Below the table is a chart of the out-of-sample score and out-of-sample score SE by the row number. In the case of linear/logistic regression, out-of-sample score will also be shown against the number of nonzero coefficients, and for any of the decision tree models, out-of-sample score will be shown against number of trees.
 
 ### Model
 
-This section describes the model that was fit using the training/evaluation data. If single model is run, that model is described here, if multiple models were compared, the model that returned the highest average out-of-sample score on the training set is described. First, the model formula and parameters are given, along with the in-sample score. Next, if the model is a linear/logistic regression, coefficients will be shown. For other models, variable importance will be provided in both a table and a chart.
+This section describes the model that was fit using the training/evaluation data. If single model is run, that model is described here. If multiple models were compared, the model that returned the highest average out-of-sample score on the training set is described. First, the model formula and parameters are given, along with the in-sample score. Next, if the model is a linear/logistic regression, coefficients will be shown. For other models, variable importance will be provided in both a table and a chart.
+
+Variable importance measures the impact of each variable's contribution to the model. The add-in does this by randomly swapping variable values (up and down a column in Excel, for example) and seeing by how much the out-of-sample score decreases. The variables that cause the greatest drops in out-of-sample score are the most important.
 
 ### Model evaluation
 
-Lists every predicted and true outcome for the entire evaluation dataset. The AUC curve and the out-of-sample score for the evaluation set is also generated.
+First, the out-of-sample score of the model is presented. If evaluating a classfication model (binary output), the ROC curve is output next. Lastly, a table containing the predicted and true outcome, as well as the row number, for the entire evaluation dataset is given. The row number can be used to identify the input variable values for rows in the evaluation dataset.
+
+Note that the out-of-sample score of the model on the evaluation dataset will be, and should be, different than the out-of-sample score of the model on the training set.
 
 ### Model prediction
-   
-The predicted outcomes for each input in the prediction dataset.
-> True outcomes will not be listed because predictions are being made on data that doesn't include outcomes
+
+This short section includes a table listing the predicted outcomes for each input in the prediction dataset. True outcomes will not be listed because predictions are being made on data that doesn't include outcomes.
 
 ### Equivalent Python Code
 
 This section is XLKitLearn's crown jewel. It contains automatically generated Python code that will carry out analyses equivalent to those run by XLKitLearn.
 
-The code in this section *not* simply the code that the add-in uses. It is a dynamically generated to ensure maximal pedagogical impact. The simplest scikit learn function will always be used in this code, and plentiful comments will be included.
+The code in this section is *not* simply the code that the add-in uses. It is dynamically generated to ensure maximal pedagogical impact. The simplest scikit learn function will always be used in this code, and plentiful comments will be included.
 
 Note that:
   - If the data was selected from a specific sheet in the Excel workbook, the generated Python code will attempt to pull the data from the same sheet. The Excel workbook has to be open for this to work.
@@ -237,15 +243,20 @@ Note that:
 
 ### Technical details
 
-The input settings that were used to run the analysis. This can be copied and pasted directly into the "Settings" in the Add-in tab to run the exact same analysis again. The add-in version and the time for each step of the analysis are also noted.
+The input settings that were used to run the analysis. This can be copied and pasted directly into the "Settings" cell in the Add-in tab to run the exact same analysis again. The add-in version and the time for each step of the analysis are also noted.
+
+!!! Note "Copying a Setting String"
+    It is sometimes helpful to share the entire settings string in order to ensure an entire class gets the same result. However, the settings string contains the file name and sheet name of the device used to generate the output sheet from which the settings string is copied. Since file names and sheet names vary across devices, any student copying a string from another device must account for this variance.
 
 ---
 
 ## Advanced Options
 
-DREW you clearly got tired by this point; let's take a second pass :-)
+Windows users have two advanced options below the settings to give the user more control over early termination and processing speed. 
 
-Windows users have two advanced options below the settings to give the user more control over early termination and processing speed. Mac users have the option to "Attempt to terminate python". 
+1. 'Keep an active Python connection': Selecting this option will launch a Python terminal when the add-in is run and will keep the terminal open after the calculations and output have been completed. This is helpful for two reasons:
+   - With the terminal open, it is possible to terminate the calculations early by pressing Ctrl+C
+   - If running multiple models in succession, keeping the Python connection active will allow all subsequent models to run more quickly, since a Python connection need not be opened at the start of each run
+2. 'Run Python visibly to allow early termination': With this option, a Python terminal will be launched to allow for early termination. However, the terminal is closed automatically when the add-in has finished.
 
-!!! Note "Early Termination"
-    If the early termination option is selected, a black Python console will pop up. Close the console to stop the analysis.
+Mac users have the option to "Attempt to terminate python," which sends a kill code to Python running in the background. Because this button is pressed while the add-in is running, it can take a few seconds for the Python terminate.
