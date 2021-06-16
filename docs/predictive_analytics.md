@@ -6,7 +6,7 @@ XLKitLearn's predictive analytics add-in allows you to fit a range of predictive
 2. Describe the dependent and independent variables using a [formula](#specifying-a-formula); XLKitLearn's formula language allows you to carry out variable transformations, automatically create dummies for categorical variables, and more.
 3. Select the [predictive model](#specifying-a-predictive-model) to be used, together with any parameters required.
 
-The predictive analytic add-in also includes full support for [training and test sets](#training-and-test-sets), [parameter tuning](#parameter-tuning) using K-Fold cross-validation, and [inference on new datasets](#making-predictions-on-new-data).
+The predictive analytic add-in also includes full support for [training and test sets](#training-and-evaluation-sets), [parameter tuning](#parameter-tuning) using K-Fold cross-validation, and [inference on new datasets](#making-predictions-on-new-data).
 
 ## Selecting data
 
@@ -15,7 +15,7 @@ The simplest way to load data into XLKitLearn is to drag any sheets containing t
 !!! warning "Adding Sheets Containing Data"
     You should never move the add-in sheet *to* another workbook. If your data sits in another Excel workbook, bring the sheet containing your data *into* the add-in Excel workbook.
 
-Once the data is in your workbook, click on the ["Click to Select"](MATSON static shot of the settings with a red box around the button) button under "Training" in the add-in dialogue, and select the entire dataset you will be using, including column headers. Click [here](Select_Small_Data.gif) for a demo.
+Once the data is in your workbook, click on the <a id="select-data" href="#" title="">"Click to Select"</a> button under "Training" in the add-in dialogue, and select the entire dataset you will be using, including column headers. Click [here](Select_Small_Data.gif) for a demo.
     
 !!! note "Column Names"
     The first row of your data should contain column names. There are a number of rules these column names must satisfy. They must contain only letters, numbers, and underscores - no spaces - and cannot start with a number. Column names also cannot be python reserved keywords or the word "intercept".
@@ -34,7 +34,7 @@ XLKit learn can read .csv files as well as .xlsx files; make sure to include the
 
 ## Specifying a Formula
 
-In XLKitLearn, a formula specifies the *outcome* variable to be predicted (the dependent or 'y' variable) and the features that will be used to predict this variable (the independent or 'x' variables). The formula should be input into the [formula box](MATSON static shot of the settings with a red box around the box).
+In XLKitLearn, a formula specifies the *outcome* variable to be predicted (the dependent or 'y' variable) and the features that will be used to predict this variable (the independent or 'x' variables). The formula should be input into the <a id="formula-box" href="#" title="">formula box</a>.
 
 XLKitLearn formulas are always provided in the following format
 
@@ -48,16 +48,16 @@ For example, suppose you are fitting a model on the Boston housing dataset provi
 
 ### The Formula Editor
 
-You can always type the formula into the [formula box](MATSON static shot of the settings with a red box around the box) manually. To make things easier for you, XLKitLearn also includes a formula editor, which offers a number of helpful features. To launch the formula editor, click on the [three dots](MATSON gif of clicking on the three dots and loading the formula editor) next to the formula box.
+You can always type the formula into the <a id="formula-box2" href="#" title="">formula box</a> manually. To make things easier for you, XLKitLearn also includes a formula editor, which offers a number of helpful features. To launch the formula editor, click on the [three dots](SCREENSHOT gif of clicking on the three dots and loading the formula editor) next to the formula box.
 
-The formula editor contains a [list at the left](MATSON static shot of the formula editor with a red box around the list) of all the variables in the selected data (whether in Excel or in an external file). It also contains a [larger textbox](MATSON static shot of the formula editor with a red box around the larger textbox) in which to type your formula.
+The formula editor contains a <a id="formula-editor-list" href="#" title="">list at the left</a> of all the variables in the selected data (whether in Excel or in an external file). It also contains a <a id="formula-editor" href="#" title="">larger textbox</a> in which to type your formula.
 
 The formula editor also supports auto-complete for quicker formula entry. As variable names are typed in the formula entry box, the list on the left is filtered down to variables that begin with those letters, and the first such variable is automatically suggested. Pressing the Tab key will complete the name of that variable. Click [here](Formula_Editor.gif) for a demo.
 
 !!! note "Variables Names in External Files"
     In the following circumstances, XLKitLearn will not be able to load variable names from the file and display them in the formula editor. (1) If you are loading a .xlsx file, XLKitLearn will not be able to open the file and read column names. (2) If you are on a Mac and loading an external file, Mac security settings will stop XLKitLearn from opening the file and reading column names.
 
-If the formula you entered contains an error, the formula input box will turn red, and an error message will be displayed in the [bottom part](MATSON static shot of the formula editor with a red box around the error area) of the formula editor.
+If the formula you entered contains an error, the formula input box will turn red, and an error message will be displayed in the <a id="formula-editor-error" href="#" title="">bottom part</a> of the formula editor.
 
 ### Advanced XLKitLearn Formulas
 
@@ -105,9 +105,9 @@ Note that XLKitLearn's formulas leverage the [Patsy](https://patsy.readthedocs.i
 
 ## Specifying a Predictive Model
 
-The final component of any predictive analytic workflow is the model that will be trained and used to make predictions. The model can be selected in the [model dropdown](MATSON static screenshot with the model dropdown opened, and a red box around it).
+The final component of any predictive analytic workflow is the model that will be trained and used to make predictions. The model can be selected in the <a id="model-dropdown" href="#" title="">model dropdown</a>.
 
-Some predictive models require parameters to be specified. In those cases, the parameters can be specified in the [parameter section](MATSON static screenshot with a read box around the parameter section), which will update to list the parameters required for the specific model select. In addition, any parameters that are required (and cannot be left blank) will highlight in red.
+Some predictive models require parameters to be specified. In those cases, the parameters can be specified in the <a id="parameters" href="#" title="">parameter section</a>, which will update to list the parameters required for the specific model select. In addition, any parameters that are required (and cannot be left blank) will highlight in red.
 
 ### Regression vs Classification
 
@@ -147,7 +147,7 @@ XLKitLearn supports the following models:
     * The tree depth, which determines the maximum depth of each tree in the ensemble
     * The number of trees in the ensemble
 
-For specific details on how these models are implemented, see the [generated Python code](MATSON link to the generated python code in the main intro page) for each model - these generated pieces of code will illustrate how SciKitLearn packages are used to fit each of these models.
+For specific details on how these models are implemented, see the [generated Python code](SCREENSHOT link to the generated python code in the main intro page) for each model - these generated pieces of code will illustrate how SciKitLearn packages are used to fit each of these models.
 
 ---
 
@@ -164,7 +164,7 @@ In addition to comparing multiple parameters against each other, you can also te
 !!! note "Comparing Two Formulas"
         Note that when comparing two formulas, the dependent variable (`median_property_value` above) needs to be repeated for each formula. Additionally, all formulas being compared must have the same dependent variable.
 
-XLKitLearn allows you to specify the number of folds to use; simply enter the number in the [appropriate box](MATSON static shot with a red box round the number of folds box).
+XLKitLearn allows you to specify the number of folds to use; simply enter the number in the <a id="kfold-box" href="#" title="">appropriate box</a>.
 
 !!! note "Required Cross Validation"
         If your model requires cross-validation (i.e., if you are testing multiple parameters or formulas against each other) but you do not specify the number of folds, the "folds" box will turn red to remind you this parameter is required. Remember that when fitting a boosted decision tree, cross-validation is *always* required.
@@ -245,7 +245,7 @@ Note that:
 
 The input settings that were used to run the analysis. This can be copied and pasted directly into the "Settings" cell in the Add-in tab to run the exact same analysis again. The add-in version and the time for each step of the analysis are also noted.
 
-!!! Note "Copying a Setting String"
+!!! Note "Copying a Settings String"
     It is sometimes helpful to share the entire settings string in order to ensure an entire class gets the same result. However, the settings string contains the file name and sheet name of the device used to generate the output sheet from which the settings string is copied. Since file names and sheet names vary across devices, any student copying a string from another device must account for this variance.
 
 ---
@@ -260,3 +260,21 @@ Windows users have two advanced options below the settings to give the user more
 2. 'Run Python visibly to allow early termination': With this option, a Python terminal will be launched to allow for early termination. However, the terminal is closed automatically when the add-in has finished.
 
 Mac users have the option to "Attempt to terminate python," which sends a kill code to Python running in the background. Because this button is pressed while the add-in is running, it can take a few seconds for the Python terminate.
+
+<script>
+  $(document).ready(function() {
+    $("head").append('<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">');
+    $("head").append('<script src="https://code.jquery.com/jquery-1.12.4.js"></script>');
+    $("head").append('<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>');
+    $("#select-data").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/select-data.png" />' });
+    $("#formula-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-box.png" />' });
+    $("#formula-box2").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-box.png" />' });
+    $("#formula-editor-list").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-editor-list.png" />' });
+    $("#formula-editor").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-editor.png" />' });
+    $("#formula-editor-error").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-editor-error.png" />' });
+    $("#kfold-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/kfold-box.png" />' });
+    $("#model-dropdown").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/model-dropdown.png" />' });
+    $("#parameters").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/parameters.png" />' });
+  })
+</script>
+
