@@ -26,4 +26,4 @@ theme:
 
 extra_css:
   - https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css
-  - custom_theme/assets/stylesheets/main-tooltip.css
+  - stylesheets/main-tooltip.css
