@@ -264,8 +264,8 @@ Mac users have the option to "Attempt to terminate python," which sends a kill c
 <script>
   $(document).ready(function() {
     $("head").append('<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">');
-    $("head").append('<script src="https://code.jquery.com/jquery-1.12.4.js"></script>');
-    $("head").append('<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>');
+</script>
+<script>
     $("#select-data").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/select-data.png" />' });
     $("#formula-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-box.png" />' });
     $("#formula-box2").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-box.png" />' });
@@ -277,4 +277,3 @@ Mac users have the option to "Attempt to terminate python," which sends a kill c
     $("#parameters").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/parameters.png" />' });
   })
 </script>
-
