@@ -48,7 +48,7 @@ For example, suppose you are fitting a model on the Boston housing dataset provi
 
 ### The Formula Editor
 
-You can always type the formula into the <a id="formula-box2" href="#" title="">formula box</a> manually. To make things easier for you, XLKitLearn also includes a formula editor, which offers a number of helpful features. To launch the formula editor, click on the [three dots](SCREENSHOT gif of clicking on the three dots and loading the formula editor) next to the formula box.
+You can always type the formula into the <a id="formula-box2" href="#" title="">formula box</a> manually. To make things easier for you, XLKitLearn also includes a formula editor, which offers a number of helpful features. To launch the formula editor, click on the <a id="formula-editor-gif" href="#" title="">three dots</a> next to the formula box.
 
 The formula editor contains a <a id="formula-editor-list" href="#" title="">list at the left</a> of all the variables in the selected data (whether in Excel or in an external file). It also contains a <a id="formula-editor" href="#" title="">larger textbox</a> in which to type your formula.
 
@@ -147,7 +147,7 @@ XLKitLearn supports the following models:
     * The tree depth, which determines the maximum depth of each tree in the ensemble
     * The number of trees in the ensemble
 
-For specific details on how these models are implemented, see the [generated Python code](SCREENSHOT link to the generated python code in the main intro page) for each model - these generated pieces of code will illustrate how SciKitLearn packages are used to fit each of these models.
+For specific details on how these models are implemented, see the [generated Python code](TO DO link to the generated python code in the main intro page) for each model - these generated pieces of code will illustrate how SciKitLearn packages are used to fit each of these models.
 
 ---
 
@@ -272,5 +272,7 @@ Mac users have the option to "Attempt to terminate python," which sends a kill c
     $("#kfold-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/kfold-box.png" />' });
     $("#model-dropdown").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/model-dropdown.png" />' });
     $("#parameters").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/parameters.png" />' });
+    $("#formula-editor-gif").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-editor-gif.gif" />' });
   })
 </script>
+
