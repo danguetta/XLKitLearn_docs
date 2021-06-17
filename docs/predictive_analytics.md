@@ -262,9 +262,6 @@ Windows users have two advanced options below the settings to give the user more
 Mac users have the option to "Attempt to terminate python," which sends a kill code to Python running in the background. Because this button is pressed while the add-in is running, it can take a few seconds for the Python terminate.
 
 <script>
-$("head").append('<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">');
-</script>
-<script>
   $(document).ready(function() {
     $("#select-data").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/select-data.png" />' });
     $("#formula-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-box.png" />' });
