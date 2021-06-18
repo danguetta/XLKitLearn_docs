@@ -4,11 +4,11 @@
 }
 
 .hover-link {
-	color: black;
+	color: black !important;
 	text-decoration: none;
-	bottom-border: 1px dotted #4051b5;
+	bottom-border: 2px dotted #4051b5;
 }
 
 .hover-link:hover {
-	color: #4051b5;
+	color: #4051b5 !important;
 }
