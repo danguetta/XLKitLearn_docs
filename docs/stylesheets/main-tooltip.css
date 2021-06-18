@@ -6,7 +6,7 @@
 .hover-link {
 	color: black !important;
 	text-decoration: none;
-	bottom-border: 2px dotted #4051b5;
+	border-bottom: 2px dotted #4051b5;
 }
 
 .hover-link:hover {
