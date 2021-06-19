@@ -2,3 +2,13 @@
 	max-width: 700px !important;
 	padding: 4px;
 }
+
+.hover-link {
+	color: black !important;
+	text-decoration: none;
+	border-bottom: 2px dotted #4051b5;
+}
+
+.hover-link:hover {
+	color: #4051b5 !important;
+}
