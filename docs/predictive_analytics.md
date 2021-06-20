@@ -105,7 +105,7 @@ Note that XLKitLearn's formulas leverage the [Patsy](https://patsy.readthedocs.i
 
 ## Specifying a Predictive Model
 
-The final component of any predictive analytic workflow is the model that will be trained and used to make predictions. The model can be selected in the <a id="model-dropdown" class="hover-link" href="javascript:;" title="">model dropdown</a>. DREW update this to include knn in the dropdown 
+The final component of any predictive analytic workflow is the model that will be trained and used to make predictions. The model can be selected in the <a id="model-dropdown" class="hover-link" href="javascript:;" title="">model dropdown</a>.
 
 Some predictive models require parameters to be specified. In those cases, the parameters can be specified in the <a id="parameters" class="hover-link" href="javascript:;" title="">parameter section</a>, which will update to list the parameters required for the specific model selected. In addition, any parameters that are required (and cannot be left blank) will be highlighted in red.
 
@@ -179,7 +179,7 @@ Note that if multiple parameters are tuned (eg: tree depths of 1 and 2 _and_ lea
 
 ## Training and Evaluation Sets
 
-XLKitLearn is able to work with separate training and evaluation datasets. Evaluation datasets can be specified in the 'Evaluation' section of the addin (DREW hover image please!) in a number of ways:
+XLKitLearn is able to work with separate training and evaluation datasets. Evaluation datasets can be specified in the <a id="evaluation-section" class="hover-link" href="javascript:;" title="">"Evaluation" section</a> of the addin in a number of ways:
 
 1. **No evaluation set**: the entire training set will be used to train the model, and no evaluation set will be used.
 2. **Automatically generate an evaluation set with __ % of the training data**: the addin will shuffle the data, and randomly set aside a portion of the dataset to be used as an evaluation set on which to test the performance of the model. The [randomization seed](#the-randomization-seed) will determine the way the dataset is shuffled, so using this option multiple times with the same percentage and randomization seed will yield identical evaluation sets.
@@ -189,7 +189,7 @@ XLKitLearn is able to work with separate training and evaluation datasets. Evalu
 
 ## Making Predictions on New Data
 
-The "make predictions on new data" (DREW screenshot) section allows inference to be carried out on new data. If a dataset is specified in this section, the highest performing model will be used to make predictions for the rows in that dataset.
+The <a id="prediction-section" class="hover-link" href="javascript:;" title="">"make predictions on new data" section</a> allows inference to be carried out on new data. If a dataset is specified in this section, the highest performing model will be used to make predictions for the rows in that dataset.
 
 As in the case with selecting an evaluation dataset manually, this dataset must satisfy one of two conditions - it must either (a) have the same number of columns as the original training dataset, and in the same order (b) must contains all the training columns used in the model, with the same column names.
 
@@ -244,7 +244,7 @@ The specific details output about each model will depend on the model in questio
   - **Decision tree**: for decision trees with fewer than four layers, a graphical representation of the tree will be output. For all trees, a textual representation of the tree will be output.
   - **K-nearest neighbors and ensemble models**: for these models, the permutation variable importance ([scikit-learn reference](https://scikit-learn.org/stable/modules/permutation_importance.html)) will be listed for each variable, in decreasing order of importance. In particular, each column will be randomly permuted a number of times, and the resulting drop in model performance will be calculated in each case. The greater the drop, the more important the variable. These values will also be graphed - each red dot represents the drop in performance for a given permutation, and the black star is the average of the red dots.
 
-Note that for models with thousands of variables, this section might be rather large. If your application does not require these details, you can uncheck the "output model" (DREW screenshot) box in the addin settings to omit it.
+Note that for models with thousands of variables, this section might be rather large. If your application does not require these details, you can uncheck the <a id="output-model-box" class="hover-link" href="javascript:;" title="">"output model" box</a> in the addin settings to omit it.
 
 ### Model evaluation
 
@@ -252,7 +252,7 @@ If an evaluation set is selected using any of the methods described above, the b
 
   - **The out-of-sample score** of the model, as evaluated on this dataset. If a regression model is fit, this will be an R-squared score. If a classification model is fit, this will be an AUC score ([wikipedia reference](https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve)).
   - **An ROC curve** will be output, if a classification model is fit.
-  - **A table** listing every row in the evaluation set, together with the row number in the original dataset, the _true_ value of the dependent variable from that original dataset, and the _predicted_ value using our model. If the evaluation set is large, this table will be output to a file in the same directory as the addin, and the name of the file will be listed here. If you application does not require this table, you can uncheck the "output evaluation dataset" (DREW screenshot) box in the addin settings to omit it.
+  - **A table** listing every row in the evaluation set, together with the row number in the original dataset, the _true_ value of the dependent variable from that original dataset, and the _predicted_ value using our model. If the evaluation set is large, this table will be output to a file in the same directory as the addin, and the name of the file will be listed here. If you application does not require this table, you can uncheck the <a id="output-evaluation-dataset" class="hover-link" href="javascript:;" title="">"output evaluation dataset" box</a> in the addin settings to omit it.
 
 ### Model prediction
 
@@ -281,7 +281,7 @@ The input settings that were used to run the analysis. These can be copied and p
 
 ## Advanced Settings
 
-A number of advanced settings (DREW screenshot) are provided by XLKitLearn at the bottom of the addin sheet. These settings difer on PC and Mac computers.
+A number of <a id="advanced-settings" class="hover-link" href="javascript:;" title="">advanced settings</a> are provided by XLKitLearn at the bottom of the addin sheet. These settings differ on PC and Mac computers.
 
 ### PC Advanced Settings
 
@@ -314,5 +314,11 @@ Mac users will see a button that will allow them to "Attempt to terminate python
     $("#small-data").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/Select_Small_Data.gif" />' });
     $("#large-data").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/Select_Large_Data.gif" />' });
     $("#formula-editor-large-gif").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/Formula_Editor.gif" />' });
+    $("#evaluation-section").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/evaluation-section.png" />' });
+    $("#prediction-section").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/prediction-section.png" />' });
+    $("#output-model-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/uncheck-output-model.png" />' });
+    $("#advanced-settings").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/advanced-options.png" />' });
+    $("#output-evaluation-dataset").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/uncheck-output-evaluation-dataset.png" />' });
   })
 </script>
+
