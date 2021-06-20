@@ -82,7 +82,7 @@ The formula language used by XLKitLearn also allows you to seamlessly transform 
 
 	`median_property_value ~ crime_per_capita * highway_accessibility ` 
 
-  Note the the ` a*b ` construction is shorthand for ` a + b + a x b`. In the example above, the model output would include both crime per capita and highway accessibility as dependent variables on their own, as well as the interaction term.
+	Note the the ` a*b ` construction is shorthand for ` a + b + a x b`. In the example above, the model output would include both crime per capita and highway accessibility as dependent variables on their own, as well as the interaction term.
 
 * **Removing the intercept**: An intercept will be added to the formula by default. Adding `-1` at the end of the formula will remove the intercept.
 
@@ -92,7 +92,7 @@ The formula language used by XLKitLearn also allows you to seamlessly transform 
 
 * **Creating yes/no outcomes**: XLKitLearn will [automatically interpret](#regression-vs-classification) any formula in which the outcome column contains only 0s and 1s as a classification task.
 
-XLKitLearn also supports one-versus-all classification models, in which an outcome column is converted to a 1 if it is equal to a certain value, and 0 otherwise. This is best illustrated by example. Suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict whether the highway accessibility is equal to 4 or not using every other column in the data. You would use the following formula:
+	XLKitLearn also supports one-versus-all classification models, in which an outcome column is converted to a 1 if it is equal to a certain value, and 0 otherwise. This is best illustrated by example. Suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict whether the highway accessibility is equal to 4 or not using every other column in the data. You would use the following formula:
   `(highway_accessibility = 4) ~ .`
   The model will then interpret all rows in which highway accessibility is 4 as a '1' outcome, and '0' otherwise. 
 
@@ -113,13 +113,13 @@ Some predictive models require parameters to be specified. In those cases, the p
 
 For each of its models, XLKitLearn supports both regression models (with continuous outcomes) and classification models (with 0/1 outcomes). XLKitLearn will automatically determine the type of model required - if the outcome column (as specified in the [formula](#specifying-a-formula)) only contains 0s and 1s, a classification model will be fit. Otherwise, a regression model will be fit.
 
-Note that XLKitLearn does not currently support classification models with more than two possible outcomes. As described above, however, these can be coverted into one-versus-all classifcation models.
+Note that XLKitLearn does not currently support classification models with more than two possible outcomes. As described above, however, these can be converted into one-versus-all classification models.
 
 ### Supported Models
 
 XLKitLearn supports the following models:
 
-1. **Linear and Logistic Regression**: Depending on whether a [regression or classification](#regression-vs-classification) model is required, XLKitLearn will fit a linear regression ([wikepedia reference](https://en.wikipedia.org/wiki/Linear_regression)) model or a logistic regression ([wikipedia reference](https://en.wikipedia.org/wiki/Logistic_regression)) on the data. XLKitLearn makes the following parameter(s) available for this model
+1. **Linear and Logistic Regression**: Depending on whether a [regression or classification](#regression-vs-classification) model is required, XLKitLearn will fit a linear regression ([wikipedia reference](https://en.wikipedia.org/wiki/Linear_regression)) model or a logistic regression ([wikipedia reference](https://en.wikipedia.org/wiki/Logistic_regression)) on the data. XLKitLearn makes the following parameter(s) available for this model
 
 	* The Lasso penalty ([wikipedia reference](https://en.wikipedia.org/wiki/Lasso_(statistics))), which can be specified in one of three ways
 		- If it is left blank, XLKitLearn will assume it is equal to 0, and fit an unpenalized linear model.
@@ -139,10 +139,8 @@ XLKitLearn supports the following models:
 
 	* The tree depth, which determines the maximum depth of each tree in the ensemble
 	* The maximum number of trees in the ensemble
-
-   > Boosted trees do not always continue improving as extra trees are added - after a certain point, performance drops. Thus, after fitting the number of trees specified by this parameter, XLKitLearn will automatically determine whether some smaller number of trees performs better on the left-out folds in K-fold cross validation. For this reason, boosted decision trees *always* need a value for K in the [parameter tuning](#parameter-tuning) section of the addin, even when multiple parameters are not being compared against each other.
-
-		* The learning rate for the gradient boosting procedure
+		* Boosted trees do not always continue improving as extra trees are added - after a certain point, performance drops. Thus, after fitting the number of trees specified by this parameter, XLKitLearn will automatically determine whether some smaller number of trees performs better on the left-out folds in K-fold cross validation. For this reason, boosted decision trees *always* need a value for K in the [parameter tuning](#parameter-tuning) section of the addin, even when multiple parameters are not being compared against each other.
+	* The learning rate for the gradient boosting procedure
 
 5. **Random Forest**: A random forest ([wikipedia reference](https://en.wikipedia.org/wiki/Random_forest)). XLKitLearn makes the following parameter(s) available for this model:
 
@@ -321,4 +319,3 @@ Mac users will see a button that will allow them to "Attempt to terminate python
     $("#output-evaluation-dataset").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/uncheck-output-evaluation-dataset.png" />' });
   })
 </script>
-
