@@ -279,7 +279,7 @@ The input settings that were used to run the analysis. These can be copied and p
 
 ## Advanced Settings
 
-A number of <a id="advanced-settings" class="hover-link" href="javascript:;" title="">advanced settings</a> are provided by XLKitLearn at the bottom of the addin sheet. These settings differ on PC and Mac computers.
+A number of <a id="advanced-settings-image" class="hover-link" href="javascript:;" title="">advanced settings</a> are provided by XLKitLearn at the bottom of the addin sheet. These settings differ on PC and Mac computers.
 
 ### PC Advanced Settings
 
@@ -315,7 +315,7 @@ Mac users will see a button that will allow them to "Attempt to terminate python
     $("#evaluation-section").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/evaluation-section.png" />' });
     $("#prediction-section").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/prediction-section.png" />' });
     $("#output-model-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/uncheck-output-model.png" />' });
-    $("#advanced-settings").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/advanced-settings.png" />' });
+    $("#advanced-settings-image").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/advanced-settings.png" />' });
     $("#output-evaluation-dataset").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/uncheck-output-evaluation-dataset.png" />' });
   })
 </script>
