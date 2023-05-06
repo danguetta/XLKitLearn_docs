@@ -1,0 +1,1000 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../text_analytics/">
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.9">
+    
+    
+      
+        <title>Predictive Analytics - XLKitLearn User Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+      <link rel="stylesheet" href="../stylesheets/main-tooltip.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#predictive-analytics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="XLKitLearn User Manual" class="md-header__button md-logo" aria-label="XLKitLearn User Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XLKitLearn User Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Predictive Analytics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="XLKitLearn User Manual" class="md-nav__button md-logo" aria-label="XLKitLearn User Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    XLKitLearn User Manual
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        XLKitLearn
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Predictive Analytics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Predictive Analytics
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-data" class="md-nav__link">
+    Selecting data
+  </a>
+  
+    <nav class="md-nav" aria-label="Selecting data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-data-from-files" class="md-nav__link">
+    Reading data from files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-a-formula" class="md-nav__link">
+    Specifying a Formula
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying a Formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-formula-editor" class="md-nav__link">
+    The Formula Editor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-xlkitlearn-formulas" class="md-nav__link">
+    Advanced XLKitLearn Formulas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-a-predictive-model" class="md-nav__link">
+    Specifying a Predictive Model
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying a Predictive Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regression-vs-classification" class="md-nav__link">
+    Regression vs Classification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-models" class="md-nav__link">
+    Supported Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-tuning" class="md-nav__link">
+    Parameter Tuning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-and-evaluation-sets" class="md-nav__link">
+    Training and Evaluation Sets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-predictions-on-new-data" class="md-nav__link">
+    Making Predictions on New Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-randomization-seed" class="md-nav__link">
+    The Randomization Seed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-predictive-addin-output" class="md-nav__link">
+    Understanding the Predictive Addin Output
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Predictive Addin Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-tuning_1" class="md-nav__link">
+    Parameter tuning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-evaluation" class="md-nav__link">
+    Model evaluation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-prediction" class="md-nav__link">
+    Model prediction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equivalent-python-code" class="md-nav__link">
+    Equivalent Python Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-details" class="md-nav__link">
+    Technical details
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-settings" class="md-nav__link">
+    Advanced Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pc-advanced-settings" class="md-nav__link">
+    PC Advanced Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac-advanced-settings" class="md-nav__link">
+    Mac advanced settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../text_analytics/" class="md-nav__link">
+        Text Analytics
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-data" class="md-nav__link">
+    Selecting data
+  </a>
+  
+    <nav class="md-nav" aria-label="Selecting data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-data-from-files" class="md-nav__link">
+    Reading data from files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-a-formula" class="md-nav__link">
+    Specifying a Formula
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying a Formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-formula-editor" class="md-nav__link">
+    The Formula Editor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-xlkitlearn-formulas" class="md-nav__link">
+    Advanced XLKitLearn Formulas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-a-predictive-model" class="md-nav__link">
+    Specifying a Predictive Model
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying a Predictive Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regression-vs-classification" class="md-nav__link">
+    Regression vs Classification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-models" class="md-nav__link">
+    Supported Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-tuning" class="md-nav__link">
+    Parameter Tuning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-and-evaluation-sets" class="md-nav__link">
+    Training and Evaluation Sets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-predictions-on-new-data" class="md-nav__link">
+    Making Predictions on New Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-randomization-seed" class="md-nav__link">
+    The Randomization Seed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-predictive-addin-output" class="md-nav__link">
+    Understanding the Predictive Addin Output
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Predictive Addin Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-tuning_1" class="md-nav__link">
+    Parameter tuning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-evaluation" class="md-nav__link">
+    Model evaluation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-prediction" class="md-nav__link">
+    Model prediction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equivalent-python-code" class="md-nav__link">
+    Equivalent Python Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-details" class="md-nav__link">
+    Technical details
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-settings" class="md-nav__link">
+    Advanced Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pc-advanced-settings" class="md-nav__link">
+    PC Advanced Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac-advanced-settings" class="md-nav__link">
+    Mac advanced settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="predictive-analytics">Predictive Analytics</h1>
+<p>XLKitLearn's predictive analytics addin allows you to fit a range of predictive models in Excel. There are three main components of predictive analytic workflows in XLKitLearn:</p>
+<ol>
+<li><a href="#selecting-data">Specify the data</a> to be used to train the predictive model; XLKitLearn can read data from the current Excel workbook, or pull data directly from a file.</li>
+<li>Describe the dependent and independent variables using a <a href="#specifying-a-formula">formula</a>; XLKitLearn's formula language allows you to carry out variable transformations, automatically create dummies for categorical variables, and more.</li>
+<li>Select the <a href="#specifying-a-predictive-model">predictive model</a> to be used, together with any parameters required.</li>
+</ol>
+<p>The predictive analytic addin also includes full support for <a href="#training-and-evaluation-sets">training and test sets</a>, <a href="#parameter-tuning">parameter tuning</a> using K-Fold cross-validation, and <a href="#making-predictions-on-new-data">inference on new datasets</a>.</p>
+<h2 id="selecting-data">Selecting data</h2>
+<p>The simplest way to load data into XLKitLearn is to drag any sheets containing the data into the addin workbook.</p>
+<div class="admonition warning">
+<p class="admonition-title">Adding Sheets Containing Data</p>
+<p>You should never move the addin sheet <em>to</em> another workbook. If your data sits in another Excel workbook, bring the sheet containing your data <em>into</em> the addin Excel workbook.</p>
+</div>
+<p>Once the data is in your workbook, click on the <a id="select-data" class="hover-link" href="javascript:;" title="">"Click to Select"</a> button under "Training" in the addin dialogue, and select the entire dataset you will be using, including column headers. Hover <a id="small-data" class="hover-link" href="javascript:;" title="">here</a> for a demo.</p>
+<div class="admonition note">
+<p class="admonition-title">Column Names</p>
+<p>The first row of your data should contain column names. There are a number of rules these column names must satisfy. They must contain only letters, numbers, and underscores - no spaces - and cannot start with a number. Column names also cannot be python reserved keywords or the word "intercept".</p>
+</div>
+<hr />
+<h3 id="reading-data-from-files">Reading data from files</h3>
+<p>When working with a very large dataset, opening it in Excel may slow down your computer. In fact, it may be altogether impossible if the dataset contains more rows than Excel can handle.</p>
+<p>For these situations, XLKitLearn allows you to read data directly from a source file, without having to open it in Excel. After clicking on "Click to select", simply type the name of the file directly into the dialogue box. Hover <a id="large-data" class="hover-link" href="javascript:;" title="">here</a> for a demo. The first row of the file should contain the column names (the same column name rules apply).</p>
+<p>XLKit learn can read .csv files as well as .xlsx files; make sure to include the file extension (.csv or .xslx) when you specify the file name.</p>
+<hr />
+<h2 id="specifying-a-formula">Specifying a Formula</h2>
+<p>In XLKitLearn, a formula specifies the <em>outcome</em> variable to be predicted (the dependent or 'y' variable) and the features that will be used to predict this variable (the independent or 'x' variables). The formula should be input into the <a id="formula-box" class="hover-link" href="javascript:;" title="">formula box</a>.</p>
+<p>XLKitLearn formulas are always provided in the following format</p>
+<p><code>dependent_variable ~ independent_variable_1 + independent_variable_2 + ...</code></p>
+<p>Variables are referred to using the columns names in the data.</p>
+<p>For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median house price using the crime per capita and the average number of rooms per dwelling. The formula would then be</p>
+<p><code>median_property_value ~ crime_per_capita + av_rooms_per_dwelling</code></p>
+<h3 id="the-formula-editor">The Formula Editor</h3>
+<p>You can always type the formula into the <a id="formula-box2" class="hover-link" href="javascript:;" title="">formula box</a> manually. To make things easier for you, XLKitLearn also includes a formula editor, which offers a number of helpful features. To launch the formula editor, click on the <a id="formula-editor-gif" class="hover-link" href="javascript:;" title="">three dots</a> next to the formula box.</p>
+<p>The formula editor contains a <a id="formula-editor-list" class="hover-link" href="javascript:;" title="">list at the left</a> of all the variables in the selected data (whether in Excel or in an external file). It also contains a <a id="formula-editor" class="hover-link" href="javascript:;" title="">larger textbox</a> in which to type your formula.</p>
+<p>The formula editor also supports auto-complete for quicker formula entry. As variable names are typed in the formula entry box, the list on the left is filtered down to variables that begin with those letters, and the first such variable is automatically suggested. Pressing the Tab key will complete the name of that variable. Hover <a id="formula-editor-large-gif" class="hover-link" href="javascript:;" title="">here</a> for a demo.</p>
+<div class="admonition note">
+<p class="admonition-title">Variables Names in External Files</p>
+<p>In the following circumstances, XLKitLearn will not be able to load variable names from the file and display them in the formula editor. (1) If you are loading a .xlsx file, XLKitLearn will not be able to open the file and read column names. (2) If you are on a Mac and loading an external file, Mac security settings will stop XLKitLearn from opening the file and reading column names.</p>
+</div>
+<p>If the formula you entered contains an error, the formula input box will turn red, and an error message will be displayed in the <a id="formula-editor-error" class="hover-link" href="javascript:;" title="">bottom part</a> of the formula editor.</p>
+<h3 id="advanced-xlkitlearn-formulas">Advanced XLKitLearn Formulas</h3>
+<p>The formula language used by XLKitLearn also allows you to seamlessly transform variables in your data in a number of useful ways:</p>
+<ul>
+<li>
+<p><strong>Creating categorical variables</strong>: When a variable needs to be treated as categorical (<a href="https://en.wikipedia.org/wiki/Categorical_variable">wikipedia reference</a>), XLKitLearn can automatically create dummy variables (<a href="https://en.wikipedia.org/wiki/Dummy_variable_(statistics)">wikipedia reference</a>) on the fly. Simply surround the variable with <code>C()</code>. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median property value using the crime per capita and the highway accessibility treated as a categorical. The formula would be</p>
+<p><code>median_property_value ~ crime_per_capita + C(highway_accessibility)</code></p>
+<p>A few notes. (a) When a variable is treated as categorical, dummies will always be created for every possible value of that variable. The first dummy (in alphabetical order) will then be dropped from the model. (b) Any column containing non-numerical values will automatically be created as a categorical, with or without the <code>C()</code> around it.</p>
+</li>
+<li>
+<p><strong>Standardizing variables</strong>: Surrounding any variable with <code>standardize()</code> will subtract the mean of that variable form every value in the column, and divide by its standard deviation. This can be particularly useful when comparing the size of coefficients in a linear regression. Note that when using <a href="#training-and-evaluation-sets">training and test sets</a>, this transformation will be done correctly; the mean of the <em>training</em> set will be used to standardize variables in the evaluation set.</p>
+</li>
+<li>
+<p><strong>Including all variables</strong>: To include every variable in the data as independent variables in your model, simply use <code>~.</code>. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median property value using every other variable in the data. The formula would then be</p>
+<p><code>median_property_value ~ .</code></p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Categorical Variables and <code>~.</code><p>As mentioned above under "Creating categorical variables", any column containing non-numerical values that is explicitly named in the formula will automatically be treated as a categorical variable. This, however, is not true of variables that are implicitly included using <code>~.</code>. Therefore, if any of your columns contain non-numerical values, using a <code>~.</code> will result in an error.</p>
+</p>
+</div>
+<ul>
+<li>
+<p><strong>Including interaction terms</strong>: It is sometimes necessary to include an interaction term (<a href="https://en.wikipedia.org/wiki/Interaction_(statistics)">wikipedia reference</a>) in a predictive model. This is done using the <code>*</code> character. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median property value using the interaction of crime per capita and highway accessibility. The formula would be </p>
+<p><code>median_property_value ~ crime_per_capita * highway_accessibility</code> </p>
+<p>Note the the <code>a*b</code> construction is shorthand for <code>a + b + a x b</code>. In the example above, the model output would include both crime per capita and highway accessibility as dependent variables on their own, as well as the interaction term.</p>
+</li>
+<li>
+<p><strong>Removing the intercept</strong>: An intercept will be added to the formula by default. Adding <code>-1</code> at the end of the formula will remove the intercept.</p>
+</li>
+<li>
+<p><strong>Applying Python functions</strong>: Any Python function can be used as part of a formula; <code>numpy</code> functions can be accessed using <code>np.</code>. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median property value using the crime per capita and the crime per capita squared. The formula would be</p>
+<p><code>median_property_value ~ crime_per_capita + np.power(crime_per_capita, 2)</code></p>
+</li>
+<li>
+<p><strong>Creating yes/no outcomes</strong>: XLKitLearn will <a href="#regression-vs-classification">automatically interpret</a> any formula in which the outcome column contains only 0s and 1s as a classification task.</p>
+<p>XLKitLearn also supports one-versus-all classification models, in which an outcome column is converted to a 1 if it is equal to a certain value, and 0 otherwise. This is best illustrated by example. Suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict whether the highway accessibility is equal to 4 or not using every other column in the data. You would use the following formula:
+  <code>(highway_accessibility = 4) ~ .</code>
+  The model will then interpret all rows in which highway accessibility is 4 as a '1' outcome, and '0' otherwise. </p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Non-numeric Columns as dependent variables<p>Including a non-numeric column as the dependent variable will return an error unless a yes/no outcome is created in this way.</p>
+</p>
+</div>
+<p>Note that XLKitLearn's formulas leverage the <a href="https://patsy.readthedocs.io/en/latest">Patsy</a> Python library, which itself approximates <a href="https://www.r-project.org/">R</a>-style formulas. Any formula features available in Patsy can also be used in XLKitLearn. Some of the features described above, however, are not directly available in Patsy.</p>
+<hr />
+<h2 id="specifying-a-predictive-model">Specifying a Predictive Model</h2>
+<p>The final component of any predictive analytic workflow is the model that will be trained and used to make predictions. The model can be selected in the <a id="model-dropdown" class="hover-link" href="javascript:;" title="">model dropdown</a>.</p>
+<p>Some predictive models require parameters to be specified. In those cases, the parameters can be specified in the <a id="parameters" class="hover-link" href="javascript:;" title="">parameter section</a>, which will update to list the parameters required for the specific model selected. In addition, any parameters that are required (and cannot be left blank) will be highlighted in red.</p>
+<h3 id="regression-vs-classification">Regression vs Classification</h3>
+<p>For each of its models, XLKitLearn supports both regression models (with continuous outcomes) and classification models (with 0/1 outcomes). XLKitLearn will automatically determine the type of model required - if the outcome column (as specified in the <a href="#specifying-a-formula">formula</a>) only contains 0s and 1s, a classification model will be fit. Otherwise, a regression model will be fit.</p>
+<p>Note that XLKitLearn does not currently support classification models with more than two possible outcomes. As described above, however, these can be converted into one-versus-all classification models.</p>
+<h3 id="supported-models">Supported Models</h3>
+<p>XLKitLearn supports the following models:</p>
+<ol>
+<li>
+<p><strong>Linear and Logistic Regression</strong>: Depending on whether a <a href="#regression-vs-classification">regression or classification</a> model is required, XLKitLearn will fit a linear regression (<a href="https://en.wikipedia.org/wiki/Linear_regression">wikipedia reference</a>) model or a logistic regression (<a href="https://en.wikipedia.org/wiki/Logistic_regression">wikipedia reference</a>) on the data. XLKitLearn makes the following parameter(s) available for this model</p>
+<ul>
+<li>The Lasso penalty (<a href="https://en.wikipedia.org/wiki/Lasso_(statistics)">wikipedia reference</a>), which can be specified in one of three ways<ul>
+<li>If it is left blank, XLKitLearn will assume it is equal to 0, and fit an unpenalized linear model.</li>
+<li>It can be set to a numerical value to specify the weight of the Lasso penalty in the model.</li>
+<li>If set to the special value <code>BS</code>, XLKitLearn will perform best-subset selection, in which every possible combination of the variables provided will be tested against each other using K-fold cross validation. Note that this option is only available when the formula includes fewer than 10 variables.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>K-Nearest Neighbors</strong>: A simple k-nearest-neighbors (<a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">wikipedia reference</a>) regressor or classifier will be fit on the data. XLKitLearn makes the following parameter(s) available for this model</p>
+<ul>
+<li>The number of neighbors, K</li>
+<li>The weighting to be used when averaging neighboring values. This parameter can take two possible values: 'uniform' (or 'u'), and 'distance' (or 'd'). In the case of uniform weighting, all neighbors will be weighted equally, and in the case of distance weighting, closer neighbors will be weighted more heavily and distant neighbors will be weighted less. If this field is left blank, uniform weighting will be used by default.</li>
+</ul>
+</li>
+<li>
+<p><strong>Decision Tree</strong>: A simple decision tree (<a href="https://en.wikipedia.org/wiki/Decision_tree_learning">wikipedia reference</a>) will be fit using CART. The splitting criterion will be chosen based on whether a <a href="#regression-vs-classification">regression or classification</a> model is required; the mean-squared-error for the former, and the gini impurity for the latter. XLKitLearn makes the following parameter(s) available for this model</p>
+<ul>
+<li>The tree depth, which determines the maximum depth of the tree</li>
+</ul>
+</li>
+<li>
+<p><strong>Boosted Decision Tree</strong>: A boosted decision tree (<a href="https://en.wikipedia.org/wiki/Gradient_boosting">wikipedia reference</a>) fit using gradient boosting. XLKitLearn makes the following parameter(s) available for this model:</p>
+<ul>
+<li>The tree depth, which determines the maximum depth of each tree in the ensemble</li>
+<li>The maximum number of trees in the ensemble<ul>
+<li>Boosted trees do not always continue improving as extra trees are added - after a certain point, performance drops. Thus, after fitting the number of trees specified by this parameter, XLKitLearn will automatically determine whether some smaller number of trees performs better on the left-out folds in K-fold cross validation. For this reason, boosted decision trees <em>always</em> need a value for K in the <a href="#parameter-tuning">parameter tuning</a> section of the addin, even when multiple parameters are not being compared against each other.</li>
+</ul>
+</li>
+<li>The learning rate for the gradient boosting procedure</li>
+</ul>
+</li>
+<li>
+<p><strong>Random Forest</strong>: A random forest (<a href="https://en.wikipedia.org/wiki/Random_forest">wikipedia reference</a>). XLKitLearn makes the following parameter(s) available for this model:</p>
+<ul>
+<li>The tree depth, which determines the maximum depth of each tree in the ensemble</li>
+<li>The number of trees in the ensemble</li>
+</ul>
+</li>
+</ol>
+<p>For specific details on how these models are implemented, see the <a href="#equivalent-python-code">generated Python code</a> for each model - these generated pieces of code will illustrate how SciKitLearn packages are used to fit each of these models.</p>
+<hr />
+<h2 id="parameter-tuning">Parameter Tuning</h2>
+<p>XLKitLearn supports K-fold cross validation (<a href="https://en.wikipedia.org/wiki/Cross-validation_(statistics)">wikipedia reference</a>) for parameter tuning. The model that performs <em>best</em> on all the folds on average will be selected and fit on the entire data.</p>
+<p>In particular, for any of the parameters described <a href="#supported-models">above</a>, multiple values of the parameters can be compared against each other by specifying several values, separated by <code>&amp;</code> signs. For example, if you are fitting a decision tree and would like to compare trees of depth 2, 3, and 4, you should enter <code>2 &amp; 3 &amp; 4</code> in the "tree depth" parameter for the decision tree.</p>
+<p>In addition to comparing multiple parameters against each other, you can also test multiple formulas against each other. For example, suppose you are fitting a model on the Boston housing dataset provided with XLKitLearn, and that you want to predict the median property value. To compare a model that makes this prediction using <code>crime_per_capita</code> to one that makes this prediction using <code>av_rooms_per_dwelling</code>, you would type the following formula into XLKitLearn:</p>
+<p><code>median_property_value ~ crime_per_capita &amp; median_property_value ~ av_rooms_per_dwelling</code></p>
+<div class="admonition note">
+<p class="admonition-title">Comparing Two Formulas<p>Note that when comparing two formulas, the dependent variable (<code>median_property_value</code> above) needs to be repeated for each formula. Additionally, all formulas being compared must have the same dependent variable.</p>
+</p>
+</div>
+<p>XLKitLearn allows you to specify the number of folds to use; simply enter the number in the <a id="kfold-box" class="hover-link" href="javascript:;" title="">appropriate box</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Required Cross Validation<p>If your model requires cross-validation (i.e., if you are testing multiple parameters or formulas against each other) but you do not specify the number of folds, the "folds" box will turn red to remind you this parameter is required. Remember that when fitting a boosted decision tree, cross-validation is <em>always</em> required.</p>
+</p>
+</div>
+<p>The folds will be split randomly, using the <a href="#the-randomization-seed">randomization seed</a> provided in the addin.</p>
+<p>Note that if multiple parameters are tuned (eg: tree depths of 1 and 2 <em>and</em> learning rates of 0.1 and 0.2 for a boosted tree), every combination of these parameters will be tested (tree depth of 1 and learning rate of 0.1, tree depth of 2 and learning rate of 0.1, tree depth of 1 and learning rate of 0.2, tree depth of 2 and learning rate of 0.2).</p>
+<hr />
+<h2 id="training-and-evaluation-sets">Training and Evaluation Sets</h2>
+<p>XLKitLearn is able to work with separate training and evaluation datasets. Evaluation datasets can be specified in the <a id="evaluation-section" class="hover-link" href="javascript:;" title="">"Evaluation" section</a> of the addin in a number of ways:</p>
+<ol>
+<li><strong>No evaluation set</strong>: the entire training set will be used to train the model, and no evaluation set will be used.</li>
+<li><strong>Automatically generate an evaluation set with __ % of the training data</strong>: the addin will shuffle the data, and randomly set aside a portion of the dataset to be used as an evaluation set on which to test the performance of the model. The <a href="#the-randomization-seed">randomization seed</a> will determine the way the dataset is shuffled, so using this option multiple times with the same percentage and randomization seed will yield identical evaluation sets.</li>
+<li><strong>Use a specific evaluation set</strong>: a specific dataset can be selected - <a href="#selecting-data">using either method above</a> - to be used as an evaluation dataset on which the model will be tested. Note that this evaluation dataset must satisfy one of two conditions - it must either (a) have the same number of columns as the original training dataset, and in the same order (b) must contains all the training columns used in the model, with the same column names.</li>
+</ol>
+<hr />
+<h2 id="making-predictions-on-new-data">Making Predictions on New Data</h2>
+<p>The <a id="prediction-section" class="hover-link" href="javascript:;" title="">"make predictions on new data" section</a> allows inference to be carried out on new data. If a dataset is specified in this section, the highest performing model will be used to make predictions for the rows in that dataset.</p>
+<p>As in the case with selecting an evaluation dataset manually, this dataset must satisfy one of two conditions - it must either (a) have the same number of columns as the original training dataset, and in the same order (b) must contains all the training columns used in the model, with the same column names.</p>
+<hr />
+<h2 id="the-randomization-seed">The Randomization Seed</h2>
+<p>The randomization seed determines the choices XLKitLearn makes whenever randomization is required. This includes</p>
+<ol>
+<li>The random splitting of training data into training and test datasets</li>
+<li>The random splitting of training data into K folds for cross validation</li>
+<li>The randomness involved in fitting models (eg: the random features selected in each tree of a random forest)</li>
+</ol>
+<p>If the addin is run twice with the same randomization seed, the results will be <em>identical</em>. This can be useful in a classroom setting, to ensure the entire class gets the same answer.</p>
+<hr />
+<h2 id="understanding-the-predictive-addin-output">Understanding the Predictive Addin Output</h2>
+<p>The model output is dynamic based on the selected model and dataset. Depending on model type and parameters, not all of the following sections will be returned.</p>
+<h3 id="parameter-tuning_1">Parameter tuning</h3>
+<p>If the addin was asked to compare multiple parameters to each other using K-fold cross validation, this section will summarize the result of these comparison. Each row corresponds to one combination of parameters that were tested, and the table will contain the following columns:</p>
+<ul>
+<li><strong>Row</strong>: the row number</li>
+<li><strong>In-sample score</strong>: the in-sample score for the model with the parameters specified in that row. If K-folds are used, K different models will be fit (each on a training dataset comprising all the data minus one fold), the in-sample score for each of these K models will be calculated, and these scores will be averaged and listed in this column.</li>
+<li><strong>Out-of-sample score</strong>: the out-of-sample score for the model with the parameters specified in that row. For each of the K models, the performance of these models will be calculated on the left-out fold, and these scores will be averaged and listen in this column.</li>
+<li><strong>Out-of-sample SE</strong>: the standard error of the average out-of-sample score. This will be calculated by finding the standard deviation of the K out-of-sample scores, and dividing the results by the square root of K.</li>
+<li>The remaining columns of the table will contain the formula, and the relevant parameters being tested in that row.
+    If a regression model is fit, the scores output will be R-squared scores. If a classification model is fit, the scores output will be AUC scores (<a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve">wikipedia reference</a>).</li>
+</ul>
+<p>Note that in two specific instances, there will be two additional columns included in this table:</p>
+<ul>
+<li><strong>For boosted decision trees</strong>: an additional column called "Best number of trees". As discussed above, when a boosted decision tree ensemble is fit with a given maximum number of trees, the addin monitors the performance of the model as new trees are added, and stops when the performance starts to decline. This column specifies the number of trees at which the addin stopped, which is then used for the final model.</li>
+<li><strong>For Lasso-penalized linear models</strong>: an additional column called "Nonzero coefficients" will list the number of nonzero coefficients in the model when using this particular penalty.</li>
+</ul>
+<p>Below this table, the addin will create a bar graph summarizing the results of parameter tuning - each bar will correspond to one row in the table, and display the out-of-sample score with error bars.</p>
+<p>In addition, certain models will output additional graphs</p>
+<ul>
+<li><strong>Penalized linear models (or best-subset regressions)</strong>: another graph will be created charting the optimal number of nonzero coefficients against the out-of-sample performance.</li>
+<li><strong>Tree-based ensemble models</strong>: a graph will be produced charting the out-of-sample performance as additional trees are added to the ensemble. One line will be produced for every row in the validation table.</li>
+</ul>
+<h3 id="model">Model</h3>
+<p>This section describes the final model that was fit on the entire training dataset. If multiple models were compared using K-fold cross validation, the model with the highest out-of-sample score will be re-fit on the entire training dataset and displayed here.</p>
+<p>The specific details output about each model will depend on the model in question:</p>
+<ul>
+<li><strong>Linear models</strong>: a table will list the coefficients of the model. If a simple linear model is fit with no cross-validation or penalty, p-values and confidence intervals will also be provided.</li>
+<li><strong>Decision tree</strong>: for decision trees with fewer than four layers, a graphical representation of the tree will be output. For all trees, a textual representation of the tree will be output.</li>
+<li><strong>K-nearest neighbors and ensemble models</strong>: for these models, the permutation variable importance (<a href="https://scikit-learn.org/stable/modules/permutation_importance.html">scikit-learn reference</a>) will be listed for each variable, in decreasing order of importance. In particular, each column will be randomly permuted a number of times, and the resulting drop in model performance will be calculated in each case. The greater the drop, the more important the variable. These values will also be graphed - each red dot represents the drop in performance for a given permutation, and the black star is the average of the red dots.</li>
+</ul>
+<p>Note that for models with thousands of variables, this section might be rather large. If your application does not require these details, you can uncheck the <a id="output-model-box" class="hover-link" href="javascript:;" title="">"output model" box</a> in the addin settings to omit it.</p>
+<h3 id="model-evaluation">Model evaluation</h3>
+<p>If an evaluation set is selected using any of the methods described above, the best model selected above will be evaluated using this data. This section will contain the following:</p>
+<ul>
+<li><strong>The out-of-sample score</strong> of the model, as evaluated on this dataset. If a regression model is fit, this will be an R-squared score. If a classification model is fit, this will be an AUC score (<a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve">wikipedia reference</a>).</li>
+<li><strong>An ROC curve</strong> will be output, if a classification model is fit.</li>
+<li><strong>A table</strong> listing every row in the evaluation set, together with the row number in the original dataset, the <em>true</em> value of the dependent variable from that original dataset, and the <em>predicted</em> value using our model. If the evaluation set is large, this table will be output to a file in the same directory as the addin, and the name of the file will be listed here. If you application does not require this table, you can uncheck the <a id="output-evaluation-dataset" class="hover-link" href="javascript:;" title="">"output evaluation dataset" box</a> in the addin settings to omit it.</li>
+</ul>
+<h3 id="model-prediction">Model prediction</h3>
+<p>If the addin was asked to perform inference on a <a href="#making-predictions-on-new-data">new dataset</a>, this section will contain a table listing those predictions. All the caveats listed regarding the table in the previous section apply here too.</p>
+<h3 id="equivalent-python-code">Equivalent Python Code</h3>
+<p>This section is XLKitLearn's crown jewel. It contains automatically generated Python code that will carry out analyses equivalent to those run by XLKitLearn.</p>
+<p>The code in this section is <em>not</em> simply the code that the addin uses. It is dynamically generated to ensure maximal pedagogical impact. The simplest scikit learn function will always be used in this code, and plentiful comments will be included.</p>
+<p>Note that:</p>
+<ul>
+<li>If the data was selected from a specific sheet in the Excel workbook, the generated Python code will attempt to pull the data from the same sheet. The Excel workbook has to be open for this to work.</li>
+<li>If the data was loaded from a file, the generated Python code will attempt to pull the data from the same file. The code must therefore be in the same directory as the file.</li>
+</ul>
+<h3 id="technical-details">Technical details</h3>
+<p>The input settings that were used to run the analysis. These can be copied and pasted directly into the "Settings" cell in the addin tab to run the exact same analysis again, and can be useful to students who might want to replicate the analysis in a solutions spreadsheet.</p>
+<div class="admonition note">
+<p class="admonition-title">Copying a Settings String</p>
+<p>The settings string contains the name of the files and/or sheets containing the data used for the run. Thus, if copying the settings string to another device, the addin will only run successfully if those files and/or sheets exist on the new device.</p>
+</div>
+<hr />
+<h2 id="advanced-settings">Advanced Settings</h2>
+<p>A number of <a id="advanced-settings-image" class="hover-link" href="javascript:;" title="">advanced settings</a> are provided by XLKitLearn at the bottom of the addin sheet. These settings differ on PC and Mac computers.</p>
+<h3 id="pc-advanced-settings">PC Advanced Settings</h3>
+<p>Two settings are provided on a PC</p>
+<ul>
+<li><strong>Keep an active Python connection</strong>: when this box in unchecked, XLKitLearn will launch Python every time the "run" button is pressed, and then terminate that Python instance when the run has completed. This means that every time the addin is run, relevant Python packages need to be loaded, which can be time-consuming. When this box is checked, Python will be launched once, and <em>not</em> terminated at the end of the run. This will make future runs much faster.</li>
+<li><strong>Run Python visibly to allow early termination</strong>: when this box is unchecked, XLKitLearn will run Python in the background, invisibly. If this box is checked, the the background process running Python will become visible, as a black window. The benefit of this window is that if the addin is taking too long to run or freeing your computer, you can simply close the black window to interrupt the process. If you do this, an error will pop up which you can just click out of to return to the addin.</li>
+</ul>
+<p>Note that if the first option is selected to keep an active Python connection, Python will <em>always</em> be run visibly.</p>
+<div class="admonition note">
+<p class="admonition-title">Active Python Connections with Lenghty Runs</p>
+<p>One key downside of keeping an active Python connection is that if the run takes more than approximately a minute, the run will fail with an incomprehensible error. This arises because of a limitation in the way Excel connects to Python. If this happens, simply click out of the error, uncheck the "keep an active Python connection" box and attempt the run again.</p>
+</div>
+<h3 id="mac-advanced-settings">Mac advanced settings</h3>
+<p>Mac users will see a button that will allow them to "Attempt to terminate python". Clicking this button will send a kill code to the Python running in the background and terminate it if the addin is taking too long to run. Note that after the button is pressed, it can take a few moments to interrupt the process.</p>
+<script>
+  $(document).ready(function() {
+    $("#select-data").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/select-data.png" />' });
+    $("#formula-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-box.png" />' });
+    $("#formula-box2").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-box.png" />' });
+    $("#formula-editor-list").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-editor-list.png" />' });
+    $("#formula-editor").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-editor.png" />' });
+    $("#formula-editor-error").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-editor-error.png" />' });
+    $("#kfold-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/kfold-box.png" />' });
+    $("#model-dropdown").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/model-dropdown.png" />' });
+    $("#parameters").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/parameters.png" />' });
+    $("#formula-editor-gif").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/formula-editor-gif.gif" />' });
+    $("#small-data").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/Select_Small_Data.gif" />' });
+    $("#large-data").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/Select_Large_Data.gif" />' });
+    $("#formula-editor-large-gif").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/Formula_Editor.gif" />' });
+    $("#evaluation-section").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/evaluation-section.png" />' });
+    $("#prediction-section").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/prediction-section.png" />' });
+    $("#output-model-box").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/uncheck-output-model.png" />' });
+    $("#advanced-settings-image").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/advanced-settings.png" />' });
+    $("#output-evaluation-dataset").tooltip({ content: '<img src="https://danguetta.github.io/XLKitLearn_docs/uncheck-output-evaluation-dataset.png" />' });
+  })
+</script>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
+      
+    
+  </body>
+</html>
